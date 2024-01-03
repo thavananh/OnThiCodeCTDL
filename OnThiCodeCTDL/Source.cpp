@@ -19,5 +19,7 @@ int main()
 	cout << thuatToanTimKiemNhiPhan_KhongDeQuy(dynamic_array, 5) << endl;*/
 	/*moPhongCachChayInterchangeSort_doichotructiep_tangdan(dynamic_array);*/
 	cout << endl;
-	moPhongSelectionSort_sapxepchon_tangdan(dynamic_array);
+	//moPhongSelectionSort_sapxepchon_tangdan(dynamic_array);
+	//moPhongInsertionSort_tangdan(dynamic_array);
+	moPhongBubbleSort_tangdan(dynamic_array);
 }

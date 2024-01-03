@@ -132,6 +132,11 @@ public:
 			cout << arr[i] << " ";
 		}
 	}
+
+	void modifiedElement(T val, int index)
+	{
+		arr[index] = val;
+	}
 };
 
 
@@ -317,8 +322,81 @@ void moPhongSelectionSort_sapxepchon_tangdan(DynamicArray<T>dynamic_array)
 }
 
 template <typename T>
+void InsertionSort_tangdan(DynamicArray<T>& dynamic_array) // Note the '&' for reference
+{
+    unsigned int i, pos;
+    T x;
+    for (i = 1; i < dynamic_array.length(); ++i)
+    {
+        x = dynamic_array.getElement(i);
+        for (pos = i; pos > 0 && dynamic_array.getElement(pos-1) > x; pos--)
+        {
+            dynamic_array.modifiedElement(dynamic_array.getElement(pos - 1), pos);
+        }
+        dynamic_array.modifiedElement(x, pos); // Corrected this line
+    }
+}
+
+
+template <typename T>
 void moPhongInsertionSort_tangdan(DynamicArray<T> dynamic_array)
 {
-	unsigned int i = 0, j = 0;
+	 int i, pos;
+	 int pre_pos;
+	T x;
+	int lan = 1;
+	for (i = 1; i < dynamic_array.length(); ++i)
+	{
+		x = dynamic_array.getElement(i);
+		cout << "Lan lap thu " << lan << endl;
+		lan++;
+		DynamicArray<T> tmp(dynamic_array);
+		for (pos = i; (pos > 0) && (dynamic_array.getElement(pos - 1) > x); pos--)
+		{
+			dynamic_array.modifiedElement(dynamic_array.getElement(pos - 1), pos);
+			
+		}
+		dynamic_array.modifiedElement(x, pos);
+		cout << "i = " << i << ", pos = " << pos - 1 << "   "; tmp.printArr(); cout << '\n';
+	}
+}
 
+template <typename T>
+void bubbleSort_tangdan(DynamicArray<T> dynamic_array)
+{
+	unsigned int i, j;
+	for (i = 0; i < dynamic_array.length(); ++i)
+	{
+		for (j = dynamic_array.length() - 1; j > i; --j)
+		{
+			if (dynamic_array.getElement(j) < dynamic_array.getElement(j-1))
+			{
+				dynamic_array.swapElement(j, j - 1);
+			}
+		}
+	}
+}
+
+template <typename T>
+void moPhongBubbleSort_tangdan(DynamicArray<T> dynamic_array)
+{
+	unsigned int i, j;
+	for (i = 0; i < dynamic_array.length() - 1; ++i)
+	{
+		bool isPrint = false;
+		cout << "lan lap thu " << i + 1 << endl;
+		for (j = dynamic_array.length() - 1; j > i; --j)
+		{
+			if (dynamic_array.getElement(j) < dynamic_array.getElement(j - 1))
+			{
+				isPrint = true;
+				cout << "i = " << i << ", j = " << j << "   "; dynamic_array.printArr(); cout << '\n';
+				dynamic_array.swapElement(j, j - 1);
+			}
+		}
+		if (!isPrint)
+		{
+			dynamic_array.printArr(); cout << '\n';
+		}
+	}
 }
