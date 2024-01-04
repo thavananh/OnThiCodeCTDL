@@ -23,5 +23,8 @@
     <ClInclude Include="ctdl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ctdl_copy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
