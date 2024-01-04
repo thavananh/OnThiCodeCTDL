@@ -17,5 +17,7 @@ int main()
 	dynamic_array.addValueAt(10, 1);
 	dynamic_array.printArr(); cout << endl;
 	dynamic_array.removeValueAt(10, 1);
+	dynamic_array.printArr(); cout << endl;
+	dynamic_array.removeAllValue(10);
 	dynamic_array.printArr();
 }

@@ -1,4 +1,4 @@
-#include <stdexcept>
+﻿#include <stdexcept>
 #include <random>
 #include <iostream>
 
@@ -110,6 +110,7 @@ public:
 		{
 			throw::std::out_of_range("index muon xoa vuot qua size");
 		}
+		_arr[_size] = 0;
 		_size--;
 		for (unsigned int i = index; i < _size; ++i)
 		{
@@ -119,14 +120,15 @@ public:
 
 	void removeAllValue(T val)
 	{
-		for (unsigned int i = 0; i < _size; ++i)
+		for (int i = _size - 1; i >= 0; --i) // Lặp từ cuối mảng
 		{
-			if (val == _arr[i])
+			if (_arr[i] == val)
 			{
-				removeValueAt(val, i);
+				removeValueAt(val, i); // Gọi hàm removeValueAt với chỉ số i
 			}
 		}
 	}
+
 	void clean()
 	{
 		_capacity = 0;
@@ -140,5 +142,86 @@ public:
 		{
 			std::cout << _arr[i] << " ";
 		}
+	}
+
+	void swapElement(unsigned int index1, unsigned int index2)
+	{
+		T tmp = _arr[index1];
+		_arr[index1] = _arr[index2];
+		_arr[index2] = tmp;
+	}
+
+	void modifiedElement(T val, unsigned int index)
+	{
+		_arr[index] = val;
+	}
+
+	void interChangeSort_doichotructiep_tangdan()
+	{
+		for (unsigned int i = 0; i < _size - 1; ++i)
+		{
+			for (unsigned int j = i + 1; j < _size; j++)
+			{
+				if (_arr[i] < _arr[j])
+				{
+					swapElement(i, j);
+				}
+			}
+		}
+	}
+	void interchangeSort_doichotructiep_giamdan()
+	{
+		for (unsigned int i = 0; i < _size - 1; ++i)
+		{
+			for (unsigned int j = i + 1; j < _size; j++)
+			{
+				if (_arr[i] > _arr[j])
+				{
+					swapElement(i, j);
+				}
+			}
+		}
+	}
+	void selectionSort_sapxepchon_tangdan()
+	{
+		unsigned int j;
+		for (unsigned int i = 0; i < _size - 1; ++i)
+		{
+			int min = i;
+			for (j = i + 1; j < _size; j++)
+			{
+				if (_arr[j] < _arr[min])
+				{
+					min = j;
+				}
+			}
+			if (min != i)
+			{
+				swapElement(min, j);
+			}
+		}
+	}
+	void selectionSort_sapxepchon_giamdan()
+	{
+		unsigned int j;
+		for (unsigned int i = 0; i < _size - 1; ++i)
+		{
+			int max = i;
+			for (j = i + 1; j < _size; j++)
+			{
+				if (_arr[j] > _arr[max])
+				{
+					max = j;
+				}
+			}
+			if (max != i)
+			{
+				swapElement(max, j);
+			}
+		}
+	}
+	void sapXepChen_insertionSort_tangdan()
+	{
+		
 	}
 };
