@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <stdexcept>
 using namespace std;
@@ -401,3 +401,67 @@ void moPhongBubbleSort_tangdan(DynamicArray<T> dynamic_array)
 	}
 }
 
+template <typename T>
+void shift_hcmue(T a[], int left, int right)
+{
+	T x;
+	int curr, joint;
+	curr = left;
+	joint = 2 * curr + 1;
+	x = a[curr];
+	while (joint <= right)
+	{
+		for (int i = 0; i <= right; ++i)
+		{
+			cout << a[i] << " ";
+		}
+		cout << endl;
+		if (joint < right)
+		{
+			if (a[joint] < a[joint + 1])
+			{
+				joint = joint + 1;
+			}
+		}
+		if (a[joint] < x)
+		{
+			break;
+		}
+		
+		
+		a[curr] = a[joint];
+		curr = joint;
+		joint = 2 * curr + 1;
+		
+	}
+	a[curr] = x;
+	for (int i = 0; i <= right; ++i)
+	{
+		cout << a[i] << " ";
+	}
+	cout << endl;
+}
+
+template <typename T>
+void createHeap_hcmue(T a[], int n)
+{
+	int left;
+	for (left = (n-1) / 2; left >= 0; left--) // left = (n-1)/2 để đi từ nút lá trái ở tầng gần cuối
+	{
+		shift_hcmue(a, left, n - 1);
+	}
+}
+
+template <typename T>
+void heapSort_hcmue(T a[], int n)
+{
+	int right;
+	createHeap_hcmue(a, n);
+	right = n - 1;
+	while (right > 0)
+	{
+		swap(a[0], a[right]);
+		right--;
+		shift_hcmue(a, 0, right);
+	}
+}
