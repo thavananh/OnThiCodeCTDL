@@ -6,7 +6,7 @@ int main()
 {
 	cout << "Nhap so phan tu: ";
 	unsigned int n; cin >> n;
-	DynamicArray<long> dynamic_array(n);
+	DynamicArray<long> dynamic_array(-5);
 	for (unsigned int i = 0; i < n; ++i)
 	{
 		long val;

@@ -27,6 +27,11 @@ public:
 		{
 			throw::std::invalid_argument("Vui long khong nhap so am vao mang");
 		}
+		_arr = new T[_capacity];
+		for (int i = 0; i < _size; i++)
+		{
+			_arr[i] = dynamic_array._arr[i];
+		}
 	}
 	~DynamicArray()
 	{}
@@ -310,7 +315,7 @@ public:
 	void shift_minheap(int left, int right)
 	{
 		T x;
-		int curr, joint;
+		unsigned int curr, joint;
 		curr = left; joint = 2 * curr + 1;
 		x = _arr[curr];
 		while (joint <= right)
@@ -336,7 +341,7 @@ public:
 
 	void createHeap()
 	{
-		int left;
+		unsigned int left;
 		for (left = (_size - 1) / 2; left >= 0; left--)
 		{
 			shift_maxheap(left, _size - 1);
@@ -345,7 +350,7 @@ public:
 
 	void heapsort_sapxepvundong_tangdan()
 	{
-		int right;
+		unsigned int right;
 		createHeap();
 		right = _size - 1;
 		while (right > 0)
@@ -358,7 +363,7 @@ public:
 
 	void heapsort_sapxepvundong_giamdan()
 	{
-		int right;
+		unsigned int right;
 		createHeap();
 		right = _size - 1;
 		while (right > 0)
@@ -366,6 +371,34 @@ public:
 			swapElement(0, right);
 			right--;
 			shift_minheap(0, right);
+		}
+	}
+
+	void heapify_maxheap_28tech(unsigned int index)
+	{
+		unsigned int largest = index;
+		unsigned int left = index * 2 + 1;
+		unsigned int right = index * 2 + 2;
+		if (left < _size && _arr[left] > _arr[largest])
+		{
+			largest = left;
+		}
+		if (right < _size && _arr[right] > _arr[largest])
+		{
+			largest = right;
+		}
+		if (largest != index)
+		{
+			swapElement(index, largest);
+			heapify_maxheap_28tech(largest);
+		}
+	}
+
+	void createheap_28tech()
+	{
+		for (unsigned int i = (_size - 1)/2; i < _size; ++i)
+		{
+			heapify_maxheap_28tech(i);
 		}
 	}
 
