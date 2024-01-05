@@ -308,8 +308,9 @@ public:
 			_arr[curr] = _arr[joint];
 			curr = joint;
 			joint = 2 * curr + 1;
-			_arr[curr] = x;
+			
 		}
+		_arr[curr] = x;
 	}
 
 	void shift_minheap(int left, int right)
@@ -335,13 +336,14 @@ public:
 			_arr[curr] = _arr[joint];
 			curr = joint;
 			joint = 2 * curr + 1;
-			_arr[curr] = x;
+			
 		}
+		_arr[curr] = x;
 	}
 
 	void createHeap()
 	{
-		unsigned int left;
+		long int left;
 		for (left = (_size - 1) / 2; left >= 0; left--)
 		{
 			shift_maxheap(left, _size - 1);
@@ -374,31 +376,41 @@ public:
 		}
 	}
 
-	void heapify_maxheap_28tech(unsigned int index)
+	void heapify_maxheap_28tech(unsigned int index, unsigned int N)
 	{
 		unsigned int largest = index;
 		unsigned int left = index * 2 + 1;
 		unsigned int right = index * 2 + 2;
-		if (left < _size && _arr[left] > _arr[largest])
+		if (left < N && _arr[left] > _arr[largest])
 		{
 			largest = left;
 		}
-		if (right < _size && _arr[right] > _arr[largest])
+		if (right < N && _arr[right] > _arr[largest])
 		{
 			largest = right;
 		}
 		if (largest != index)
 		{
 			swapElement(index, largest);
-			heapify_maxheap_28tech(largest);
+			heapify_maxheap_28tech(largest, N);
 		}
 	}
 
 	void createheap_28tech()
 	{
-		for (unsigned int i = (_size - 1)/2; i < _size; ++i)
+		for (long i = _size / 2 - 1; i >= 0; --i)
 		{
-			heapify_maxheap_28tech(i);
+			heapify_maxheap_28tech(i, _size);
+		}
+	}
+
+	void heapsort_sapxepvundong_tangdan_28tech()
+	{
+		createheap_28tech();
+		for (unsigned int i = _size - 1; i > 0; --i)
+		{
+			swapElement(0, i);
+			heapify_maxheap_28tech(0, i);
 		}
 	}
 

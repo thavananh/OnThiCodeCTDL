@@ -6,7 +6,7 @@ int main()
 {
 	cout << "Nhap so phan tu: ";
 	unsigned int n; cin >> n;
-	DynamicArray<long> dynamic_array(-5);
+	DynamicArray<long> dynamic_array(n);
 	for (unsigned int i = 0; i < n; ++i)
 	{
 		long val;
@@ -19,6 +19,7 @@ int main()
 	//dynamic_array.selectionSort_sapxepchon_giamdan();
 	//dynamic_array.bubbleSort_sapxepnoibot_tangdan();
 	//dynamic_array.bubbleSort_sapxepnoibot_giamdan();
-	dynamic_array.heapsort_sapxepvundong_tangdan();
+	//dynamic_array.heapsort_sapxepvundong_tangdan();
+	dynamic_array.heapsort_sapxepvundong_tangdan_28tech();
 	dynamic_array.printArr(); cout << '\n';
 }
