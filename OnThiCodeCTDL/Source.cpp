@@ -21,6 +21,6 @@ int main()
 	//dynamic_array.bubbleSort_sapxepnoibot_giamdan();
 	//dynamic_array.heapsort_sapxepvundong_tangdan();
 	//dynamic_array.heapsort_sapxepvundong_tangdan_28tech();
-	dynamic_array.heapsort_sapxepvundong_giamdan_28tech();
+	//dynamic_array.heapsort_sapxepvundong_giamdan_28tech();
 	dynamic_array.printArr(); cout << '\n';
 }
