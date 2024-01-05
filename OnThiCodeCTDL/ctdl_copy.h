@@ -82,7 +82,7 @@ public:
 				}
 				for (unsigned int i = _size; i > index; --i)
 				{
-					newArr[i] = newArr[i-1];
+					newArr[i] = newArr[i-1]; // dịch mảng về phải
 				}
 				newArr[index] = val;
 				_arr = new T[_capacity];
@@ -97,7 +97,7 @@ public:
 			{
 				for (unsigned int i = _size; i > index; --i)
 				{
-					_arr[i] = _arr[i - 1];
+					_arr[i] = _arr[i - 1]; // dịch mảng về phải
 				}
 				_arr[index] = val;
 			}
@@ -114,7 +114,7 @@ public:
 		_size--;
 		for (unsigned int i = index; i < _size; ++i)
 		{
-			_arr[i] = _arr[i + 1];
+			_arr[i] = _arr[i + 1]; // dịch mảng về trái
 		}
 	}
 
@@ -206,7 +206,7 @@ public:
 		unsigned int j;
 		for (unsigned int i = 0; i < _size - 1; ++i)
 		{
-			int max = i;
+			unsigned int max = i;
 			for (j = i + 1; j < _size; j++)
 			{
 				if (_arr[j] > _arr[max])
@@ -222,6 +222,109 @@ public:
 	}
 	void sapXepChen_insertionSort_tangdan()
 	{
-		
+		unsigned int pos, i;
+		T x;
+		for (unsigned i = 1; i < _size; ++i)
+		{
+			x = _arr[i];
+			for (pos = i; pos > 0 && _arr[pos-1] > x; pos--)
+			{
+				_arr[pos] = _arr[pos - 1];
+			}
+			_arr[pos] = x;
+		}
 	}
+
+	void sapXepChen_insertionSort_giamdan()
+	{
+		unsigned int pos, i;
+		T x;
+		for (unsigned i = 1; i < _size; ++i)
+		{
+			x = _arr[i];
+			for (pos = i; pos > 0 && _arr[pos - 1] > x; pos--)
+			{
+				_arr[pos] = _arr[pos - 1];
+			}
+			_arr[pos] = x;
+		}
+	}
+
+	void bubbleSort_sapxepnoibot_tangdan()
+	{
+		unsigned int i, j;
+		for (i = 0; i < _size - 1; ++i)
+		{
+			for (j = _size - 1; j > i; j--)
+			{
+				if (_arr[j] < _arr[i])
+				{
+					swapElement(j, i);
+				}
+			}
+		}
+	}
+
+	void bubbleSort_sapxepnoibot_giamdan()
+	{
+		unsigned int i, j;
+		for (i = 0; i < _size - 1; ++i)
+		{
+			for (j = _size - 1; j > i; j--)
+			{
+				if (_arr[j] < _arr[i])
+				{
+					swapElement(j, i);
+				}
+			}
+		}
+	}
+
+	void shift(int left, int right)
+	{
+		T x;
+		int curr, joint;
+		curr = left; joint = 2 * curr + 1;
+		x = _arr[curr];
+		while (joint <= right)
+		{
+			if (joint < right)
+			{
+				if (_arr[joint] < _arr[joint + 1])
+				{
+					joint = joint + 1;
+				}
+				if (_arr[joint] < x)
+				{
+					break;
+				}
+				_arr[curr] = _arr[joint];
+				curr = joint;
+			}
+			_arr[curr] = x;
+		}
+	}
+
+	void createHeap()
+	{
+		int left;
+		for (left = (_size - 1) / 2; left >= 0; left--)
+		{
+
+		}
+	}
+
+	void heapsort_sapxepvundong_tangdan()
+	{
+		int right;
+		createHeap();
+		right = _size - 1;
+		while (right > 0)
+		{
+			swapElement(0, right);
+			right--;
+			shift(0, right);
+		}
+	}
+	
 };
