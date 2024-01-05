@@ -13,11 +13,12 @@ int main()
 		cin >> val;
 		dynamic_array.addValue(val);
 	}
-	dynamic_array.printArr(); cout << endl;
-	dynamic_array.addValueAt(10, 0);
-	dynamic_array.printArr(); cout << endl;
-	dynamic_array.removeValueAt(10, 0);
-	dynamic_array.printArr(); cout << endl;
-	dynamic_array.removeAllValue(10);
-	dynamic_array.printArr();
+	//dynamic_array.interChangeSort_doichotructiep_tangdan();
+	//dynamic_array.interchangeSort_doichotructiep_giamdan();
+	//dynamic_array.selectionSort_sapxepchon_tangdan();
+	//dynamic_array.selectionSort_sapxepchon_giamdan();
+	//dynamic_array.bubbleSort_sapxepnoibot_tangdan();
+	//dynamic_array.bubbleSort_sapxepnoibot_giamdan();
+	dynamic_array.heapsort_sapxepvundong_tangdan();
+	dynamic_array.printArr(); cout << '\n';
 }

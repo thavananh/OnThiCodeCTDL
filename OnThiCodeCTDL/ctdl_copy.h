@@ -162,7 +162,7 @@ public:
 		{
 			for (unsigned int j = i + 1; j < _size; j++)
 			{
-				if (_arr[i] < _arr[j])
+				if (_arr[j] < _arr[i])
 				{
 					swapElement(i, j);
 				}
@@ -175,7 +175,7 @@ public:
 		{
 			for (unsigned int j = i + 1; j < _size; j++)
 			{
-				if (_arr[i] > _arr[j])
+				if (_arr[j] > _arr[i])
 				{
 					swapElement(i, j);
 				}
@@ -197,7 +197,7 @@ public:
 			}
 			if (min != i)
 			{
-				swapElement(min, j);
+				swapElement(min, i);
 			}
 		}
 	}
@@ -216,7 +216,7 @@ public:
 			}
 			if (max != i)
 			{
-				swapElement(max, j);
+				swapElement(max, i);
 			}
 		}
 	}
@@ -280,7 +280,7 @@ public:
 		}
 	}
 
-	void shift(int left, int right)
+	void shift_maxheap(int left, int right)
 	{
 		T x;
 		int curr, joint;
@@ -294,13 +294,42 @@ public:
 				{
 					joint = joint + 1;
 				}
-				if (_arr[joint] < x)
-				{
-					break;
-				}
-				_arr[curr] = _arr[joint];
-				curr = joint;
+				
 			}
+			if (_arr[joint] < x)
+			{
+				break;
+			}
+			_arr[curr] = _arr[joint];
+			curr = joint;
+			joint = 2 * curr + 1;
+			_arr[curr] = x;
+		}
+	}
+
+	void shift_minheap(int left, int right)
+	{
+		T x;
+		int curr, joint;
+		curr = left; joint = 2 * curr + 1;
+		x = _arr[curr];
+		while (joint <= right)
+		{
+			if (joint < right)
+			{
+				if (_arr[joint] > _arr[joint + 1])
+				{
+					joint = joint + 1;
+				}
+
+			}
+			if (_arr[joint] > x)
+			{
+				break;
+			}
+			_arr[curr] = _arr[joint];
+			curr = joint;
+			joint = 2 * curr + 1;
 			_arr[curr] = x;
 		}
 	}
@@ -310,7 +339,7 @@ public:
 		int left;
 		for (left = (_size - 1) / 2; left >= 0; left--)
 		{
-
+			shift_maxheap(left, _size - 1);
 		}
 	}
 
@@ -323,8 +352,21 @@ public:
 		{
 			swapElement(0, right);
 			right--;
-			shift(0, right);
+			shift_maxheap(0, right);
 		}
 	}
-	
+
+	void heapsort_sapxepvundong_giamdan()
+	{
+		int right;
+		createHeap();
+		right = _size - 1;
+		while (right > 0)
+		{
+			swapElement(0, right);
+			right--;
+			shift_minheap(0, right);
+		}
+	}
+
 };
