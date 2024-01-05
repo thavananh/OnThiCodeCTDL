@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	/*cout << "Nhap so phan tu: ";
+	cout << "Nhap so phan tu: ";
 	unsigned int n; cin >> n;
 	DynamicArray<long> dynamic_array(n);
 	for (unsigned int i = 0; i < n; ++i)
@@ -12,7 +12,7 @@ int main()
 		long val;
 		cin >> val;
 		dynamic_array.addValue(val);
-	}*/
+	}
 	//dynamic_array.interChangeSort_doichotructiep_tangdan();
 	//dynamic_array.interchangeSort_doichotructiep_giamdan();
 	//dynamic_array.selectionSort_sapxepchon_tangdan();
@@ -22,7 +22,7 @@ int main()
 	//dynamic_array.heapsort_sapxepvundong_tangdan();
 	//dynamic_array.heapsort_sapxepvundong_tangdan_28tech();
 	//dynamic_array.heapsort_sapxepvundong_giamdan_28tech();
-	DynamicArray<int> d1, d2;
+	/*DynamicArray<int> d1, d2;
 	cout << "Nhap so phan tu: ";
 	int n1; cin >> n1;
 	for (int i = 0; i < n1; ++i)
@@ -39,6 +39,7 @@ int main()
 		cin >> a;
 		d2.addValue(a);
 	}
-	DynamicArray<int>tmp = 	merge2daydaduocsapxep<int>(d1, d2);
-	tmp.printArr();
+	DynamicArray<int>tmp = 	merge2daydaduocsapxep<int>(d1, d2);*/
+	/*tmp.printArr();*/
+
 }
