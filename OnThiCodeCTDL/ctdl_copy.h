@@ -43,6 +43,12 @@ public:
 	{
 		return _capacity;
 	}
+
+	T getVal(unsigned int index)
+	{
+		return _arr[index];
+	}
+
 	void addValue(T val)
 	{
 		if (_size >= _capacity - 1)
@@ -452,4 +458,51 @@ public:
 		}
 	}
 
+	template <typename T1>
+	friend DynamicArray<T1> merge2daydaduocsapxep(DynamicArray<T1> d1, DynamicArray<T1>d2);
+	
+
 };
+
+template <typename T1>
+ DynamicArray<T1> merge2daydaduocsapxep(DynamicArray<T1> d1, DynamicArray<T1>d2)
+{
+	unsigned int maxlength = (d1.Length() > d2.Length()) ? d1.Length() : d2.Length();
+	unsigned int i = 0, j = 0;
+	DynamicArray<T1> rs(maxlength);
+	while (i < maxlength || j < maxlength)
+	{
+		if (i == d1.Length())
+		{
+			for (size_t k = i; k < d2.Length(); k++)
+			{
+				T1 x = d2.getVal(k);
+				rs.addValue(x);
+			}
+			break;
+		}
+		else if (j == d2.Length())
+		{
+			for (size_t k = j; k < d1.Length(); k++)
+			{
+				T1 x = d1.getVal(k);
+				rs.addValue(x);
+			}
+			break;
+		}
+
+
+		if (d1.getVal(i) < d2.getVal(j))
+		{
+			rs.addValue(d1.getVal(i));
+			i++;
+		}
+		else
+		{
+			rs.addValue(d2.getVal(j));
+			j++;
+		}
+
+	}
+	return rs;
+}
