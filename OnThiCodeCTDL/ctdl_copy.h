@@ -396,7 +396,27 @@ public:
 		}
 	}
 
-	void createheap_28tech()
+	void heapify_minheap_28tech(unsigned int index, unsigned int N)
+	{
+		unsigned int largest = index;
+		unsigned int left = index * 2 + 1;
+		unsigned int right = index * 2 + 2;
+		if (left < N && _arr[left] < _arr[largest])
+		{
+			largest = left;
+		}
+		if (right < N && _arr[right] < _arr[largest])
+		{
+			largest = right;
+		}
+		if (largest != index)
+		{
+			swapElement(index, largest);
+			heapify_minheap_28tech(largest, N);
+		}
+	}
+
+	void createmaxheap_28tech()
 	{
 		for (long i = _size / 2 - 1; i >= 0; --i)
 		{
@@ -404,13 +424,31 @@ public:
 		}
 	}
 
+	void createminheap_28tech()
+	{
+		for (long i = _size / 2 - 1; i >= 0; --i)
+		{
+			heapify_minheap_28tech(i, _size);
+		}
+	}
+
 	void heapsort_sapxepvundong_tangdan_28tech()
 	{
-		createheap_28tech();
+		createmaxheap_28tech();
 		for (unsigned int i = _size - 1; i > 0; --i)
 		{
 			swapElement(0, i);
 			heapify_maxheap_28tech(0, i);
+		}
+	}
+
+	void heapsort_sapxepvundong_giamdan_28tech()
+	{
+		createminheap_28tech();
+		for (unsigned int i = _size - 1; i > 0; --i)
+		{
+			swapElement(0, i);
+			heapify_minheap_28tech(0, i);
 		}
 	}
 
