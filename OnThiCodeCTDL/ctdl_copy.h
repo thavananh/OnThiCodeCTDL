@@ -2,6 +2,8 @@
 #include <random>
 #include <iostream>
 #include <vector>
+#pragma once
+
 
 template <typename  T>
 class DynamicArray
@@ -45,6 +47,11 @@ public:
 		return _capacity;
 	}
 
+	void setSize(unsigned int size)
+	{
+		_size = size;
+	}
+
 	T getVal(unsigned int index)
 	{
 		return _arr[index];
@@ -66,7 +73,7 @@ public:
 				_arr[i] = newArr[i];
 			}
 			_arr[_size] = val;
-			delete newArr;
+			delete[] newArr;
 			newArr = nullptr;
 		}
 		else

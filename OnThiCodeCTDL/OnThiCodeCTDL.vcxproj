@@ -130,6 +130,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="baitapchuong2.h" />
     <ClInclude Include="ctdl.h" />
     <ClInclude Include="ctdl_copy.h" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 #include  "ctdl_copy.h"
+#include "baitapchuong2.h"
 #include <iostream>
 using namespace std;
 
@@ -41,6 +42,10 @@ int main()
 	}
 	DynamicArray<int>tmp = 	merge2daydaduocsapxep<int>(d1, d2);*/
 	/*tmp.printArr();*/
-	dynamic_array.mergeSort_28tech(0, dynamic_array.Length() - 1);
-	dynamic_array.printArr();
+	/*dynamic_array.mergeSort_28tech(0, dynamic_array.Length() - 1);
+	dynamic_array.printArr();*/
+	/*bai1(dynamic_array,	static_cast<long>(2));
+	dynamic_array.printArr();*/
+	//bai2(dynamic_array, static_cast<long>(2));
+	bai3(dynamic_array, static_cast<long>(100));
 }

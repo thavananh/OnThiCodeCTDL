@@ -26,5 +26,8 @@
     <ClInclude Include="ctdl_copy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="baitapchuong2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
