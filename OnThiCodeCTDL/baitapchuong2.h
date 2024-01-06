@@ -74,6 +74,6 @@ unsigned int bai3(DynamicArray<T>dynamic_array, T val)
     {
         std::cout << "Lan " << k << " : x = " << val << " nam trong doan " << "[" << left_val[k] << ".." << right_val[k] << "]" << '\n';
     }
-    std::cout << "khong tim thay" << '\n';
+    std::cout << "khong tim thay" << '\n'; 
     return -1;
 }
