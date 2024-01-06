@@ -41,5 +41,6 @@ int main()
 	}
 	DynamicArray<int>tmp = 	merge2daydaduocsapxep<int>(d1, d2);*/
 	/*tmp.printArr();*/
-
+	dynamic_array.mergeSort_28tech(0, dynamic_array.Length() - 1);
+	dynamic_array.printArr();
 }

@@ -1,6 +1,7 @@
 ﻿#include <stdexcept>
 #include <random>
 #include <iostream>
+#include <vector>
 
 template <typename  T>
 class DynamicArray
@@ -458,16 +459,84 @@ public:
 		}
 	}
 
-	template <typename T1>
-	friend DynamicArray<T1> merge2daydaduocsapxep(DynamicArray<T1> d1, DynamicArray<T1>d2);
-	
+	/*void distribute(int &nb, int &nc, int k)
+	{
+		DynamicArray<T>b(100);
+		DynamicArray<T>c(100);
+		unsigned int i, pa, pb, pc;
+		pa = pb = pc = 0;
+		while (pa < _size)
+		{
+			for (size_t i = 0; (pa < _size) && (i < k); i++, pa++, pb++)
+			{
+				b[pb] = a[pa];
+			}
+			for (size_t i = 0; (pa < _size) && (i < k); i++, pa++, pc++)
+			{
+				c[pc] = a[pa];
+			}
+		}
+		nb = pb; nc = pc;
+	}
+
+	void mergeSubarr(int nb, int nc, int &pa, int &pb, int &pc, int k)
+	{
+		std::vector<int>()
+	}*/
+
+	void merge_28tech(int left, int mid, int right)
+	{
+		DynamicArray<T> tmp1(100), tmp2(100);
+		for (unsigned int i = left; i <= mid; ++i)
+		{
+			tmp1.addValue(_arr[i]);
+		}
+		for (size_t i = mid + 1; i <= right; i++)
+		{
+			tmp2.addValue(_arr[i]);
+		}
+		unsigned int i = 0, j = 0;
+		while (i < tmp1.Length() && j < tmp2.Length())
+		{
+			if (tmp1.getVal(i) <= tmp2.getVal(j)) // phải là dấu bằng, nếu không là dấu bằng sẽ bị mất phần tử
+			{
+				_arr[left] = tmp1.getVal(i); ++left; ++i;
+			}
+			else
+			{
+				_arr[left] = tmp2.getVal(j); ++left; ++j;
+			}
+		}
+		while (i < tmp1.Length())
+		{
+			_arr[left] = tmp1.getVal(i); ++left; ++i;
+		}
+		while (j < tmp2.Length())
+		{
+			_arr[left] = tmp2.getVal(j); ++left; ++j;
+		}	
+	}
+
+	void mergeSort_28tech(unsigned int left, unsigned int right)
+	{
+		if (left >= right)
+		{
+			return;
+		}
+		int mid = (left + right) / 2;
+		mergeSort_28tech(left, mid);
+		mergeSort_28tech(mid+1, right);
+		merge_28tech(left, mid, right);
+	}
+
+	friend DynamicArray<T> merge2daydaduocsapxep(DynamicArray<T> d1, DynamicArray<T>d2);
 
 };
 
 template <typename T1>
- DynamicArray<T1> merge2daydaduocsapxep(DynamicArray<T1> d1, DynamicArray<T1>d2)
+DynamicArray<T1> merge2daydaduocsapxep(DynamicArray<T1> d1, DynamicArray<T1>d2)
 {
-	unsigned int maxlength = (d1.Length() > d2.Length()) ? d1.Length() : d2.Length();
+	unsigned int maxlength = d1.Length() + d2.Length();
 	unsigned int i = 0, j = 0;
 	DynamicArray<T1> rs(maxlength);
 	while (i < maxlength || j < maxlength)
