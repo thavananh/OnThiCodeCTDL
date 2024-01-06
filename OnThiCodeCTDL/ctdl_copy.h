@@ -536,6 +536,35 @@ public:
 		merge_28tech(left, mid, right);
 	}
 
+	unsigned int lomuto_Partion(unsigned int left, unsigned int right)
+	{
+		T pivot = _arr[right];
+		long i = left - 1;
+		for (long j = left; j < right; j++)
+		{
+			if (_arr[j] <= pivot)
+			{
+				i++;
+				swapElement(i, j);
+			}
+		}
+		++i;
+		swapElement(i, right);
+		return i;
+	}
+
+	void quickSort_lomuto(long int left, long int right)
+	{
+		if (left >= right)
+		{
+			return;
+		}
+		long int k = lomuto_Partion(left, right);
+		quickSort_lomuto(left, k - 1);
+		quickSort_lomuto(k + 1, right);
+	}
+
+
 	friend DynamicArray<T> merge2daydaduocsapxep(DynamicArray<T> d1, DynamicArray<T>d2);
 
 };

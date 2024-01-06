@@ -47,5 +47,7 @@ int main()
 	/*bai1(dynamic_array,	static_cast<long>(2));
 	dynamic_array.printArr();*/
 	//bai2(dynamic_array, static_cast<long>(2));
-	bai3(dynamic_array, static_cast<long>(100));
+	//bai3(dynamic_array, static_cast<long>(100));
+	dynamic_array.quickSort_lomuto(0, dynamic_array.Length() - 1);
+	dynamic_array.printArr();
 }
