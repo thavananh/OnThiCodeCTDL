@@ -25,6 +25,8 @@ public:
 	int getSize();
 	void display();
 	void clear();
+	Node<T>* getHead();
+	Node<T>* getTail();
 };
 
 

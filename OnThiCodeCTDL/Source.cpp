@@ -52,11 +52,24 @@ int main()
 	/*dynamic_array.quickSort_lomuto(0, dynamic_array.Length() - 1);
 	dynamic_array.printArr();*/
 	LinkedList<int> linked_list;
-	for (unsigned int i = 0; i < n; ++i)
+	/*for (unsigned int i = 0; i < n; ++i)
 	{
 		int a;
 		cin >> a;
 		linked_list.addTail(a);
+	}*/
+	for (unsigned int i = 0; i < n; ++i)
+	{
+		int a;
+		cin >> a;
+		linked_list.addHead(a);
 	}
+	//linked_list.removeHead();
+	//linked_list.removeTail();
+	//linked_list.removeAfter(linked_list.search(4));
+	linked_list.addAfter(linked_list.searchPre(linked_list.search(4)), 100);
+	cout << linked_list.getHead() << '\n';
+	cout << linked_list.getTail() << '\n';
+	cout << linked_list.getSize() << "\n";
 	linked_list.display();
 }

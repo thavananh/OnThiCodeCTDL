@@ -78,6 +78,7 @@ void LinkedList<T>::addAfter(Node<T>* node, T data)
         {
             _pTail = pAdd;
         }
+        _iSize++;
     }
 }
 
@@ -119,7 +120,7 @@ void LinkedList<T>::removeHead()
     _pHead = _pHead->_pNext;
     if (_pHead == NULL)
     {
-        _pTail == NULL;
+        _pTail = NULL;
     }
     delete pTmp;
     _iSize--;
@@ -216,6 +217,29 @@ int LinkedList<T>::getSize()
 {
     return _iSize;
 }
+
+template <typename T>
+void LinkedList<T>::clear()
+{
+	while (_pHead != NULL)
+	{
+        removeHead();
+	}
+}
+
+template <typename T>
+Node<T>* LinkedList<T>::getHead()
+{
+    return _pHead;
+}
+
+template <typename T>
+Node<T>* LinkedList<T>::getTail()
+{
+    return _pTail;
+}
+
+
 
 template class LinkedList<int>;
 template class LinkedList<double>;
