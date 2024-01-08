@@ -13,3 +13,8 @@ void Node<T>::display()
 {
     std::cout << _data;
 }
+
+template class Node<int>;
+template class Node<double>;
+template class Node<std::string>;
+template class Node<long>;

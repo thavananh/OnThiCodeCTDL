@@ -9,13 +9,20 @@ LinkedList<T>::LinkedList()
     _iSize = 0;
 }
 
+template <>
+LinkedList<int>::~LinkedList()
+{
+	
+}
+
+
 template <typename T>
 void LinkedList<T>::display()
 {
     Node<T>* pWalker = _pHead;
     while (pWalker != NULL)
     {
-        pWalker->display();
+        pWalker->display(); std::cout << " ";
         pWalker = pWalker->_pNext;
     }   
 }
@@ -23,7 +30,7 @@ void LinkedList<T>::display()
 template <typename T>
 void LinkedList<T>::addHead(T data)
 {
-    Node<T>* pAdd = new Node<T>::Node(data);
+    Node<T>* pAdd = new typename Node<T>::Node(data);
     if (_pHead == NULL)
     {
         _pHead = pAdd;
@@ -40,7 +47,7 @@ void LinkedList<T>::addHead(T data)
 template <typename T>
 void LinkedList<T>::addTail(T data)
 {
-    Node<T>* pAdd = new Node<T>::Node(data);
+    Node<T>* pAdd = new typename Node<T>::Node(data);
     if (_pTail == NULL)
     {
         _pHead = pAdd;
@@ -64,7 +71,7 @@ void LinkedList<T>::addAfter(Node<T>* node, T data)
         {
             pWalker = pWalker->_pNext;
         }
-        Node<T>* pAdd = new Node<T>::Node(data);
+        Node<T>* pAdd = new typename Node<T>::Node(data);
         pAdd->_pNext = pWalker->_pNext;
         pWalker->_pNext = pAdd;
         if (pAdd->_pNext == NULL)
@@ -180,3 +187,37 @@ void LinkedList<T>::remove(T data)
         _iSize--;
     }
 }
+
+template <typename T>
+void LinkedList<T>::selectionSort()
+{
+    Node<T>* pMin;
+    Node<T>* p;
+    Node<T>* q;
+    for (p = _pHead; p->_pNext != NULL; p = p->_pNext)
+    {
+        pMin = p;
+        for (q = p->_pNext; q->_pNext != NULL; q = q->_pNext)
+        {
+            if (q->_data < pMin->_data)
+            {
+                pMin = q;
+            }
+        }
+        if (pMin != p)
+        {
+            std::swap(pMin->_data,  p->_data);
+        }   
+    }
+}
+
+template <typename T>
+int LinkedList<T>::getSize()
+{
+    return _iSize;
+}
+
+template class LinkedList<int>;
+template class LinkedList<double>;
+template class LinkedList<std::string>;
+template class LinkedList<long>;

@@ -1,5 +1,6 @@
 #include  "ctdl_copy.h"
 #include "baitapchuong2.h"
+#include "LinkedList.h"
 #include <iostream>
 using namespace std;
 
@@ -7,13 +8,13 @@ int main()
 {
 	cout << "Nhap so phan tu: ";
 	unsigned int n; cin >> n;
-	DynamicArray<long> dynamic_array(n);
+	/*DynamicArray<long> dynamic_array(n);
 	for (unsigned int i = 0; i < n; ++i)
 	{
 		long val;
 		cin >> val;
 		dynamic_array.addValue(val);
-	}
+	}*/
 	//dynamic_array.interChangeSort_doichotructiep_tangdan();
 	//dynamic_array.interchangeSort_doichotructiep_giamdan();
 	//dynamic_array.selectionSort_sapxepchon_tangdan();
@@ -48,6 +49,14 @@ int main()
 	dynamic_array.printArr();*/
 	//bai2(dynamic_array, static_cast<long>(2));
 	//bai3(dynamic_array, static_cast<long>(100));
-	dynamic_array.quickSort_lomuto(0, dynamic_array.Length() - 1);
-	dynamic_array.printArr();
+	/*dynamic_array.quickSort_lomuto(0, dynamic_array.Length() - 1);
+	dynamic_array.printArr();*/
+	LinkedList<int> linked_list;
+	for (unsigned int i = 0; i < n; ++i)
+	{
+		int a;
+		cin >> a;
+		linked_list.addTail(a);
+	}
+	linked_list.display();
 }
