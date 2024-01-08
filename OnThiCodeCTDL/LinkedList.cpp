@@ -9,12 +9,28 @@ LinkedList<T>::LinkedList()
     _iSize = 0;
 }
 
-template <>
-LinkedList<int>::~LinkedList()
+template <typename T>
+LinkedList<T>::~LinkedList()
 {
 	
 }
 
+template <typename T>
+Node<T>* LinkedList<T>::getNodeAt(unsigned int index)
+{
+    if (index > getSize() - 1 || index < 0)
+    {
+        return NULL;
+    }
+    Node<T>* pWalker = _pHead;
+    unsigned int i = 0;
+    while (pWalker->_pNext != NULL && i <= index)
+    {
+        pWalker = pWalker->_pNext;
+        ++i;
+    }
+    return pWalker;
+}
 
 template <typename T>
 void LinkedList<T>::display()
@@ -245,3 +261,4 @@ template class LinkedList<int>;
 template class LinkedList<double>;
 template class LinkedList<std::string>;
 template class LinkedList<long>;
+template class LinkedList<bool>;

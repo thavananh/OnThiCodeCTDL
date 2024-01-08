@@ -1,5 +1,7 @@
 #include "ctdl_copy.h"
 #include <string>
+#include <sstream>
+#include <vector>
 
 template<typename T>
 void bai1(DynamicArray<T>&dynamic_array, T val)
@@ -87,6 +89,24 @@ struct Bai4_MonHoc
     Bai4_MonHoc(std::string maMon = "", std::string tenMon = "", int soTinChi = 0, double diem = 0.0) : _maMon(maMon), _tenMon(tenMon), _soTinChi(soTinChi), _diem(diem){}
 };
 
+std::istream& operator >> (std::istream& is, Bai4_MonHoc& monhoc)
+{
+    std::cout << "Nhap ma mon: "; std::cin >> monhoc._maMon;
+    std::cout << "Nhap ten mon: "; std::cin >> monhoc._tenMon;
+    std::cout << "Nhap so tin chi: "; std::cin >> monhoc._soTinChi;
+    std::cout << "Nhap diem: "; std::cin >> monhoc._diem;
+    return is;
+}
+
+std::ostream& operator << (std::ostream& os, Bai4_MonHoc monhoc)
+{
+	std::cout << "Ma mon: " << monhoc._maMon << '\n';
+    std::cout << "Ten mon: " << monhoc._tenMon << '\n';
+    std::cout << "So tin chi: " << monhoc._soTinChi << '\n';
+    std::cout << "Diem: " << monhoc._diem << '\n';
+    return os;
+}
+
 class Bai4
 {
 private:
@@ -108,5 +128,108 @@ public:
             _monHoc[i] = bai4._monHoc[i];
         }
     }
+    ~Bai4()
+    {}
+    void nhap()
+    {
+        std::cout << "nhap mssv: ";         std::cin >> _mssv; std::cin.ignore();
+        std::cout << "nhap ho ten: ";       std::getline(std::cin, _hoTen);
+        std::cout << "nhap ngay sinh: ";    std::cin >> _ngaySinh;
+        std::cout << "nhap so mon hoc: ";   std::cin >> _soMonHoc;
+        std::cout << "Nhap thong tin mon hoc" << std::endl;
+        for (size_t i = 0; i < _soMonHoc; i++)
+        {
+	        std::cin >> _monHoc[i];
+        }
+    }
+    void xuat()
+    {
+        std::cout << "MSSV: " << _mssv << '\n';
+        std::cout << "Ho Ten: " << _hoTen << '\n';
+        std::cout << "Ngay Sinh: " << _ngaySinh << '\n';
+        std::cout << "So Mon Hoc: " << _soMonHoc << '\n';
+        for (int i = 0; i < _soMonHoc; ++i)
+        {
+            std::cout << "Mon hoc thu: " << i + 1 << '\n';
+            std::cout << _monHoc[i] << std::endl;
+        }
+    }
+    std::string getMSSV()
+    {
+        return _mssv;
+    }
+    void setHoTenSinhVien(std::string hoTen)
+    {
+        _hoTen = hoTen;
+    }
+    std::string getTen()
+    {
+        std::stringstream ss(_hoTen);
+        std::string tmp;
+        std::vector<std::string>processHoTen;
+        while (ss >> tmp)
+        {
+            processHoTen.push_back(tmp);
+        }
+        if (processHoTen.size() >= 1)
+        {
+            return processHoTen[processHoTen.size() - 1];
+        }
+        return "";
+    }
 };
 
+int searchSinhVien(Bai4 sinhvien[], int n, std::string key)
+{
+    for (size_t i = 0; i < n; i++)
+    {
+        if (sinhvien[i].getMSSV() == key)     
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void insertionSort_sinhvien(Bai4 sinhvien[], int n)
+{
+    int i, j;
+	for (i = 1; i < n-1; ++i)
+    {
+        int val = (int)sinhvien[i].getTen()[0];
+        Bai4 sinhvienTmp = sinhvien[i];
+        for (j = i; j > 0 && (int)sinhvien[j-1].getTen()[0] > val; j--)
+        {
+            sinhvien[j] = sinhvien[j-1];
+        }
+        sinhvien[j] = sinhvienTmp;
+    }
+}
+
+/*
+3
+4801104035
+Lau Minh Tam
+02/03/2004
+1
+COMP123
+XSTK
+3
+5
+4801104053
+Nguyen Vo Minh Duy
+01/01/2004
+1
+COMP123
+XSTK
+3
+10
+4801104114
+Nguyen Anh Hung
+11/12/2004
+1
+COMP123
+XSTK
+3
+8
+ */

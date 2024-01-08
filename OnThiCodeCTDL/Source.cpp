@@ -6,8 +6,8 @@ using namespace std;
 
 int main()
 {
-	cout << "Nhap so phan tu: ";
-	unsigned int n; cin >> n;
+	/*cout << "Nhap so phan tu: ";
+	unsigned int n; cin >> n;*/
 	/*DynamicArray<long> dynamic_array(n);
 	for (unsigned int i = 0; i < n; ++i)
 	{
@@ -51,25 +51,58 @@ int main()
 	//bai3(dynamic_array, static_cast<long>(100));
 	/*dynamic_array.quickSort_lomuto(0, dynamic_array.Length() - 1);
 	dynamic_array.printArr();*/
-	LinkedList<int> linked_list;
-	/*for (unsigned int i = 0; i < n; ++i)
+	int n; cout << "Nhap so luong sinh vien: ";
+	cin >> n;
+	Bai4 sinhvien[5];
+	for (int i = 0; i < n; ++i)
 	{
-		int a;
-		cin >> a;
-		linked_list.addTail(a);
-	}*/
-	for (unsigned int i = 0; i < n; ++i)
-	{
-		int a;
-		cin >> a;
-		linked_list.addHead(a);
+		cout << "Nhap sinh vien thu " << i + 1 << endl;
+		sinhvien[i].nhap();
 	}
-	//linked_list.removeHead();
-	//linked_list.removeTail();
-	//linked_list.removeAfter(linked_list.search(4));
-	linked_list.addAfter(linked_list.searchPre(linked_list.search(4)), 100);
-	cout << linked_list.getHead() << '\n';
-	cout << linked_list.getTail() << '\n';
-	cout << linked_list.getSize() << "\n";
-	linked_list.display();
+	/*cout << endl;
+	for (int i = 0; i < n; ++i)
+	{
+		cout << "Sinh vien thu " << i + 1 << endl;
+		sinhvien[i].xuat();
+	}*/
+	insertionSort_sinhvien(sinhvien, n);
+	cout << endl;
+	for (int i = 0; i < n; ++i)
+	{
+		cout << "Sinh vien thu " << i + 1 << endl;
+		sinhvien[i].xuat();
+	}
+	/*int k = searchSinhVien(sinhvien, n, "4801104035");
+	if (k > -1)
+	{
+		sinhvien[k].setHoTenSinhVien("Duy Sieu Dep Trai");
+	}
+	cout << endl;
+	for (int i = 0; i < n; ++i)
+	{
+		cout << "Sinh vien thu " << i + 1 << endl;
+		sinhvien[i].xuat();
+	}*/
+	
+	//LinkedList<int> linked_list;
+	/*for (unsigned int i = 0; i < n; ++i)
+	//{
+	//	int a;
+	//	cin >> a;
+	//	linked_list.addTail(a);
+	//}*/
+	//for (unsigned int i = 0; i < n; ++i)
+	//{
+	//	int a;
+	//	cin >> a;
+	//	linked_list.addHead(a);
+	//}
+	////linked_list.removeHead();
+	////linked_list.removeTail();
+	////linked_list.removeAfter(linked_list.search(4));
+	//linked_list.addAfter(linked_list.searchPre(linked_list.search(4)), 100);
+	//cout << linked_list.getHead() << '\n';
+	//cout << linked_list.getTail() << '\n';
+	//cout << linked_list.getSize() << "\n";
+	//linked_list.display();
 }

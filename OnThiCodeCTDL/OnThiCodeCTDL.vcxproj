@@ -133,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="baitapchuong2.h" />
+    <ClInclude Include="BaiTapChuong3.h" />
     <ClInclude Include="ctdl.h" />
     <ClInclude Include="ctdl_copy.h" />
     <ClInclude Include="ctdl_copy_1.h" />

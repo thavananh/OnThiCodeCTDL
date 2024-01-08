@@ -12,6 +12,8 @@ private:
 public:
     Node(T data); // khởi tạo node mới có dữ liệu là data
     void display();
+    void setData(T data);
+    T getData();
 };
 
 
