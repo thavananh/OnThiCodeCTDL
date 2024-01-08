@@ -1,4 +1,5 @@
 #include "ctdl_copy.h"
+#include <string>
 
 template<typename T>
 void bai1(DynamicArray<T>&dynamic_array, T val)
@@ -77,3 +78,35 @@ unsigned int bai3(DynamicArray<T>dynamic_array, T val)
     std::cout << "khong tim thay" << '\n'; 
     return -1;
 }
+
+struct Bai4_MonHoc
+{
+    std::string _maMon, _tenMon;
+    int _soTinChi;
+    double _diem;
+    Bai4_MonHoc(std::string maMon = "", std::string tenMon = "", int soTinChi = 0, double diem = 0.0) : _maMon(maMon), _tenMon(tenMon), _soTinChi(soTinChi), _diem(diem){}
+};
+
+class Bai4
+{
+private:
+    std::string _mssv, _hoTen, _ngaySinh;
+    int _soMonHoc;
+    Bai4_MonHoc _monHoc[100];
+public:
+    Bai4(std::string mssv = "", std::string hoTen = " ", std::string ngaySinh = "", int soMonHoc = 0, Bai4_MonHoc monHoc[] = {}) : _mssv(mssv), _hoTen(hoTen), _ngaySinh(ngaySinh), _soMonHoc(soMonHoc)  
+    {
+        for (size_t i = 0; i < _soMonHoc; i++)
+        {
+            _monHoc[i] = monHoc[i];
+        }
+    }
+    Bai4(const Bai4& bai4): _mssv(bai4._mssv), _hoTen(bai4._hoTen), _ngaySinh(bai4._ngaySinh), _soMonHoc(bai4._soMonHoc)  
+    {
+        for (size_t i = 0; i < _soMonHoc; i++)
+        {
+            _monHoc[i] = bai4._monHoc[i];
+        }
+    }
+};
+
