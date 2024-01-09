@@ -187,7 +187,7 @@ void Bai1_n(LinkedList<T>& ll)
 {
     Node<T>* p;
     Node<T>* q;
-    for (q = ll.getHead(); q != NULL; q = q->get_pNext())
+    for (q = ll.getHead(); q != NULL; q = q->get_pNext()) // ở đây phải là q != NULL mà không q->getpNext != NULL vì, chúng ta đang xoá phần tử, lỡ phần tử cuối mà bị xoá thì khi ta cập nhật pNext sang phần tử cuối và kiểm tra điều kiện phần tử null sẽ bị lỗi memory access
     {
         for (p = q->get_pNext(); p != NULL; p = p->get_pNext())
         {
@@ -198,6 +198,73 @@ void Bai1_n(LinkedList<T>& ll)
                 ll.removeAfter(tmp);
                 ll.display(); std::cout << '\n';
             }
+        }
+    }
+    ll.display();
+}
+
+template <typename T>
+void Bai1_o(LinkedList<T>& ll)
+{
+    Node<T>* p;
+    Node<T>* q;
+    for (p = ll.getHead(); p->get_pNext() != NULL; p = p->get_pNext())
+    {
+        for (q = p->get_pNext(); q != NULL; q = q->get_pNext())
+        {
+            if (q->getData() < p->getData())
+            {
+                T tmp = p->getData();
+                p->setData(q->getData());
+                q->setData(tmp);
+            }
+        }
+    }
+    ll.display();
+}
+
+template <typename T>
+void Bai1_p(LinkedList<T>& ll)
+{
+    Bai1_o(ll); std::cout << std::endl;
+    Node<T>* p;
+    Node<T>* q;
+    T a; std::cout << "Nhap phan tu de them vao: ";
+    std::cin >> a;
+    for (p = ll.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (a < p->getData())
+        {
+           ll.addAfter(ll.searchPre(p), a);
+           break;
+        }   
+    }
+    ll.display();
+}
+
+template<typename T>
+T pt(T n)
+{
+    T sum = 0;
+    for (size_t i = 1; i <= n; i++)
+    {
+        if (n % i == 0)
+        {
+            sum += i;
+        }
+    }
+    return sum-n;
+}
+
+template <typename T>
+void Bai1_q(LinkedList<T>& ll)
+{
+    Node<T>* p;
+    for (p = ll.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (p->getData() == pt(p->getData()))
+        {
+            p->setData(0);
         }
     }
     ll.display();

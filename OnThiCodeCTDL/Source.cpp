@@ -121,5 +121,8 @@ int main()
 	//Bai1_k(linked_list);
 	//Bai1_l(linked_list);
 	//Bai1_m(linked_list);
-	Bai1_n(linked_list);
+	//Bai1_n(linked_list);
+	//Bai1_o(linked_list);
+	//Bai1_p(linked_list);
+	//Bai1_q(linked_list);
 }
