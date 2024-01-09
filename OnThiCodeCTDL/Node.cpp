@@ -29,6 +29,10 @@ T Node<T>::getData()
 template <typename T>
 Node<T>* Node<T>::get_pNext()
 {
+	if (_pNext == nullptr)
+	{
+        return nullptr;
+	}
     return _pNext;
 }
 

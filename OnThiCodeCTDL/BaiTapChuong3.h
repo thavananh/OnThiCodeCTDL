@@ -187,16 +187,17 @@ void Bai1_n(LinkedList<T>& ll)
 {
     Node<T>* p;
     Node<T>* q;
-    for (q = ll.getHead(); q->get_pNext() != NULL; q = q->get_pNext())
+    for (q = ll.getHead(); q != NULL; q = q->get_pNext())
     {
-        for (p = ll.getHead()->get_pNext(); p->get_pNext() != NULL; p = p->get_pNext())
+        for (p = q->get_pNext(); p != NULL; p = p->get_pNext())
         {
             if (q->getData() == p->getData())
             {
                 Node<T>* tmp = ll.searchPre(p);
+                p = tmp;
                 ll.removeAfter(tmp);
+                ll.display(); std::cout << '\n';
             }
-            
         }
     }
     ll.display();
