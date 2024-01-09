@@ -26,6 +26,12 @@ T Node<T>::getData()
     return _data;
 }
 
+template <typename T>
+Node<T>* Node<T>::get_pNext()
+{
+    return _pNext;
+}
+
 template class Node<int>;
 template class Node<double>;
 template class Node<std::string>;

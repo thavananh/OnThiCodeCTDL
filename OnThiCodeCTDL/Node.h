@@ -14,6 +14,7 @@ public:
     void display();
     void setData(T data);
     T getData();
+    Node* get_pNext();
 };
 
 

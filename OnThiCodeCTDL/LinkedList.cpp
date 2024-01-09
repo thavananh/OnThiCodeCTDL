@@ -24,7 +24,7 @@ Node<T>* LinkedList<T>::getNodeAt(unsigned int index)
     }
     Node<T>* pWalker = _pHead;
     unsigned int i = 0;
-    while (pWalker->_pNext != NULL && i <= index)
+    while (pWalker->_pNext != NULL && i != index)
     {
         pWalker = pWalker->_pNext;
         ++i;
@@ -103,7 +103,7 @@ template <typename T>
 Node<T>* LinkedList<T>::search(T data)
 {
     Node<T>* pWalker = _pHead;
-    while (pWalker->_data != data && pWalker != NULL) // ở đây phải duyệt pWalker != NULL vì nếu duyệt pWalker._pNext != NULL, thì nó sẽ đứng ở phần tử cuối mà không biết phần tử cuối có phải là phần tử cần tìm hay không
+    while (pWalker != NULL && pWalker->_data != data) // ở đây phải duyệt pWalker != NULL vì nếu duyệt pWalker._pNext != NULL, thì nó sẽ đứng ở phần tử cuối mà không biết phần tử cuối có phải là phần tử cần tìm hay không
     {
         pWalker = pWalker->_pNext;
     }

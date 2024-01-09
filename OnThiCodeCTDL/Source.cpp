@@ -1,5 +1,6 @@
-#include  "ctdl_copy.h"
-#include "baitapchuong2.h"
+﻿#include  "ctdl_copy.h"
+//#include "baitapchuong2.h"
+#include  "BaiTapChuong3.h"
 #include "LinkedList.h"
 #include <iostream>
 using namespace std;
@@ -51,27 +52,27 @@ int main()
 	//bai3(dynamic_array, static_cast<long>(100));
 	/*dynamic_array.quickSort_lomuto(0, dynamic_array.Length() - 1);
 	dynamic_array.printArr();*/
-	int n; cout << "Nhap so luong sinh vien: ";
-	cin >> n;
-	Bai4 sinhvien[5];
-	for (int i = 0; i < n; ++i)
-	{
-		cout << "Nhap sinh vien thu " << i + 1 << endl;
-		sinhvien[i].nhap();
-	}
-	/*cout << endl;
-	for (int i = 0; i < n; ++i)
-	{
-		cout << "Sinh vien thu " << i + 1 << endl;
-		sinhvien[i].xuat();
-	}*/
-	insertionSort_sinhvien(sinhvien, n);
-	cout << endl;
-	for (int i = 0; i < n; ++i)
-	{
-		cout << "Sinh vien thu " << i + 1 << endl;
-		sinhvien[i].xuat();
-	}
+	//int n; cout << "Nhap so luong sinh vien: ";
+	//cin >> n;
+	//Bai4 sinhvien[5];
+	//for (int i = 0; i < n; ++i)
+	//{
+	//	cout << "Nhap sinh vien thu " << i + 1 << endl;
+	//	sinhvien[i].nhap();
+	//}
+	///*cout << endl;
+	//for (int i = 0; i < n; ++i)
+	//{
+	//	cout << "Sinh vien thu " << i + 1 << endl;
+	//	sinhvien[i].xuat();
+	//}*/
+	//insertionSort_sinhvien(sinhvien, n);
+	//cout << endl;
+	//for (int i = 0; i < n; ++i)
+	//{
+	//	cout << "Sinh vien thu " << i + 1 << endl;
+	//	sinhvien[i].xuat();
+	//}
 	/*int k = searchSinhVien(sinhvien, n, "4801104035");
 	if (k > -1)
 	{
@@ -105,4 +106,20 @@ int main()
 	//cout << linked_list.getTail() << '\n';
 	//cout << linked_list.getSize() << "\n";
 	//linked_list.display();
+	LinkedList<int>linked_list;
+	Bai1_a(linked_list);
+	// Bai1_b(linked_list);
+	cout << endl;
+	// Bai1_c(linked_list); // linked list quá chậm, chán thật, chạy 10^7 + 1 phần tử mà đơ rồi
+	/*Bai1_d(linked_list);*/ //getNodeAt tiện dụng vl, sử dụng khác gì Mảng Đâu =)))
+	/*Bai1_e(linked_list);*/
+	//Bai1_f(linked_list);
+	//Bai1_g(linked_list);
+	//Bai1_h(linked_list);
+	//Bai1_i(linked_list);
+	//Bai1_j(linked_list);
+	//Bai1_k(linked_list);
+	//Bai1_l(linked_list);
+	//Bai1_m(linked_list);
+	Bai1_n(linked_list);
 }
