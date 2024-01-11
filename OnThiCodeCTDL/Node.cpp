@@ -21,6 +21,12 @@ void Node<T>::setData(T data)
 }
 
 template <typename T>
+void Node<T>::set_pNext(Node<T>* node)
+{
+    _pNext = node;
+}
+
+template <typename T>
 T Node<T>::getData()
 {
     return _data;

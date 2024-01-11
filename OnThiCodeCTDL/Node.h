@@ -13,6 +13,7 @@ public:
     Node(T data); // khởi tạo node mới có dữ liệu là data
     void display();
     void setData(T data);
+    void set_pNext(Node *pNext);
     T getData();
     Node* get_pNext();
 };

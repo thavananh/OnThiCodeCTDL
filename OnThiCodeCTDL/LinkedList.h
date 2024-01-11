@@ -20,14 +20,22 @@ public:
 	void removeHead();
 	void removeTail();
 	void removeAfter(Node<T>* node);
-	void remove(T data);
-
+	void remove(T data);	
+	void removeAtNode(Node<T>* node);
 	void selectionSort();
 	int getSize();
 	void display();
 	void clear();
 	Node<T>* getHead();
 	Node<T>* getTail();
+	bool isContain(T data);
+	void interchangeSort_doichotructiep(char option);
+	void selectionSort_sapxepchon(char option);
+	void insertionSort_sapxepchen(char option);
+	void bubbleSort_sapxepnoibot(char option);
+	void heapSort_sapxepvundong(char option);
+	void mergeSort_sapxeptron(char option);
+	void quicksort_sapxepnhanh(char option);
 };
 
 

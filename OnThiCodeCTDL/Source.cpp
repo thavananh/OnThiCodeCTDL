@@ -106,10 +106,10 @@ int main()
 	//cout << linked_list.getTail() << '\n';
 	//cout << linked_list.getSize() << "\n";
 	//linked_list.display();
-	LinkedList<int>linked_list;
-	Bai1_a(linked_list);
-	// Bai1_b(linked_list);
-	cout << endl;
+	//LinkedList<int>linked_list;
+	//Bai1_a(linked_list);
+	//// Bai1_b(linked_list);
+	//cout << endl;
 	// Bai1_c(linked_list); // linked list quá chậm, chán thật, chạy 10^7 + 1 phần tử mà đơ rồi
 	/*Bai1_d(linked_list);*/ //getNodeAt tiện dụng vl, sử dụng khác gì Mảng Đâu =)))
 	/*Bai1_e(linked_list);*/
@@ -125,4 +125,13 @@ int main()
 	//Bai1_o(linked_list);
 	//Bai1_p(linked_list);
 	//Bai1_q(linked_list);
+	//Bai2_a<int>();
+	//Bai2_b<int>();
+	//Bai2_c<int>();
+	//Bai2_d<int>();
+	//Bai2_e<int>();
+	//Bai2_f<int>();
+	//Bai2_g<int>();
+	//Bai2_h<int>();
+Bai3<int>();
 }

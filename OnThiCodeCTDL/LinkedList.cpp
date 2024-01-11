@@ -118,7 +118,7 @@ Node<T>* LinkedList<T>::searchPre(Node<T>* node)
     {
         return NULL;
     }
-    while (pWalker->_pNext != node && pWalker->_pNext != NULL)
+    while (pWalker->_pNext != node && pWalker != NULL)
     {
         pWalker = pWalker->_pNext;
     }
@@ -183,6 +183,16 @@ void LinkedList<T>::removeAfter(Node<T>* node)
 }
 
 template <typename T>
+void LinkedList<T>::removeAtNode(Node<T>* node)
+{
+    if (_pHead == NULL)
+    {
+        return;
+    }
+    removeAfter(searchPre(node));
+}
+
+template <typename T>
 void LinkedList<T>::remove(T data)
 {
     Node<T>* tmp = search(data);
@@ -229,6 +239,19 @@ void LinkedList<T>::selectionSort()
 }
 
 template <typename T>
+bool LinkedList<T>::isContain(T data)
+{
+    for (Node<T>* pWalker = _pHead; pWalker != NULL; pWalker = pWalker->_pNext)
+    {
+        if (pWalker->_data == data)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+template <typename T>
 int LinkedList<T>::getSize()
 {
     return _iSize;
@@ -255,7 +278,92 @@ Node<T>* LinkedList<T>::getTail()
     return _pTail;
 }
 
+template <typename T>
+void LinkedList<T>::interchangeSort_doichotructiep(char option = '<')
+{
+    Node<T>* p;
+    Node<T>* q;
+    if (option == '<')
+    {
+        for (p = _pHead; p != NULL; p = p->get_pNext())
+        {
+            for (q = p->get_pNext(); q != NULL; q = q->get_pNext())
+            {
+                if (q->getData() < p->getData())
+                {
+                    T data = p->getData();
+                    p->setData(q->getData());
+                    q->setData(data);
+                }
+                
+            }
+        }
+    }
+    else
+    {
+        for (p = _pHead; p != NULL; p = p->get_pNext())
+        {
+            for (q = p->get_pNext(); q != NULL; q = q->get_pNext())
+            {
+                if (q->getData() > p->getData())
+                {
+                    T data = p->getData();
+                    p->setData(q->getData());
+                    q->setData(data);
+                }
+                
+            }
+        }
+    }
+}
 
+template <typename T>
+void LinkedList<T>::selectionSort_sapxepchon(char option = '<')
+{
+    Node<T>* p;
+    Node<T>* q;
+    if (option == '<')
+    {
+        for (p = _pHead; p != NULL; p = p->_pNext)
+        {
+            Node<T>* tmp = p;
+            for (q = p->_pNext; q != NULL; q = q->_pNext)
+            {
+                if (q->_data < tmp->_data)
+                {
+                    tmp = q;
+                }
+            }
+            if (tmp != p)
+            {
+                Node<T>* tmp1 = p;
+                p = tmp->_data;
+                tmp->_data = tmp1->_data;
+            }
+        }
+    }
+    else
+    {
+        for (p = _pHead; p != NULL; p = p->_pNext)
+        {
+            Node<T>* tmp = p;
+            for (q = p->_pNext; q != NULL; q = q->_pNext)
+            {
+                if (q->_data > tmp->_data)
+                {
+                    tmp = q;
+                }
+            }
+            if (tmp != p)
+            {
+                Node<T>* tmp1 = p;
+                p = tmp->_data;
+                tmp->_data = tmp1->_data;
+            }
+        }
+    }
+    
+}
 
 template class LinkedList<int>;
 template class LinkedList<double>;

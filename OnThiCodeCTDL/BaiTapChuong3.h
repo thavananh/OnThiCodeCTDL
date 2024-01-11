@@ -269,3 +269,360 @@ void Bai1_q(LinkedList<T>& ll)
     }
     ll.display();
 }
+
+template <typename T>
+void Bai2_a()
+{
+	LinkedList<T> l1;
+    LinkedList<T> l2;
+    LinkedList<T> l3;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    for (Node<T>* p = l1.getHead(); p != NULL; p = p->get_pNext())
+    {
+        l3.addTail(p->getData());
+    }
+    for (Node<T>* p = l2.getHead(); p != NULL; p = p->get_pNext())
+    {
+        l3.addTail(p->getData());
+    }
+    l3.display();
+}
+
+template <typename T>
+void Bai2_b()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    LinkedList<T> l3;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    for (Node<T>* p = l1.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (!l2.isContain(p->getData()))
+        {
+            l3.addTail(p->getData());   
+        }
+    }
+    l3.display();
+}
+
+template <typename T>
+void Bai2_c()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    LinkedList<T> l3;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    for (Node<T>* pWalker = l1.getHead(); pWalker != NULL; pWalker = pWalker->get_pNext())
+    {
+        if (l2.isContain(pWalker->getData()))
+        {
+            l3.addTail(pWalker->getData());
+        }   
+    }
+    l3.display();
+}
+
+template <typename T>
+void Bai2_d()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    LinkedList<T> l3;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+        l3.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    for (Node<T>* p = l1.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (!l3.isContain(p->getData()))
+        {
+            l3.addTail(p->getData());   
+        }
+    }
+    for (Node<T>* p = l2.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (!l3.isContain(p->getData()))
+        {
+            l3.addTail(p->getData());   
+        }
+    }
+    l3.display();
+}
+
+template <typename T>
+void Bai2_e()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    LinkedList<T> l3;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    Node<T>* p = l1.getHead();
+    Node<T>* q = l2.getHead();
+    while (p != NULL && q != NULL)
+    {
+        l3.addTail(p->getData() + q->getData());
+        p = p->get_pNext();
+        q = q->get_pNext();
+    }
+    while (q != NULL)
+    {
+        l3.addTail(q->getData());
+        q = q->get_pNext();
+        
+    }
+    while (p != NULL)
+    {
+        l3.addTail(p->getData());
+        p = p->get_pNext();
+    }
+    l3.display();
+    
+}
+
+template <typename T>
+void Bai2_f()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    Node<T>* p = l1.getHead();
+    Node<T>* q = l2.getHead();
+    while (p != NULL && q != NULL)
+    {
+        if (l1.isContain(q->getData()) || l2.isContain(p->getData()))
+        {
+            std::cout << "Co trung lap";
+            return;
+        }
+        p = p->get_pNext();
+        q = q->get_pNext();
+    }
+    while (q != NULL)
+    {
+        if (l1.isContain(q->getData()))
+        {
+            std::cout << "Co trung lap";
+            return;
+        }
+        q = q->get_pNext();
+        
+    }
+    while (p != NULL)
+    {
+        if (l2.isContain(p->getData()))
+        {
+            std::cout << "Co trung lap";
+            return;
+        }
+        p = p->get_pNext();
+    }
+    std::cout << "Khong tim thay trung lap";
+}
+
+template <typename T>
+void Bai2_g()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    T sum = 0;
+    for (Node<T>* p = l2.getHead(); p != NULL; p = p->get_pNext())
+    {
+        sum += p->getData();
+    }
+    for (Node<T>* p = l1.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (p->getData() > sum)
+        {
+            l1.removeAtNode(p);
+            std::cout << "Da xoa phan tu thoa dieu kien" << '\n';
+            break;
+        }
+    }
+    l1.display();   
+}
+
+template <typename T>
+void Bai2_h()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    T max = l2.getHead()->getData();
+    for (Node<T>* p = l2.getHead()->get_pNext(); p != NULL; p = p->get_pNext())
+    {
+        if (p->getData() > max)
+        {
+            max = p->getData();
+        }
+    }
+    for (Node<T>* p = l1.getHead(); p != NULL;)
+    {
+        if (p->getData() == max)
+        {
+            Node<T>* tmp = p;
+            p = p->get_pNext();
+            if (tmp == l1.getHead())
+            {
+                l1.removeHead();
+            }
+            else
+            { 
+                l1.removeAtNode(tmp);
+            }
+            std::cout << "Da xoa phan tu thoa dieu kien" << '\n';
+            continue;
+        }
+        p = p->get_pNext();
+    }
+}
+
+template <typename T>
+void Bai3()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    LinkedList<T> l3;
+    LinkedList<T> tmp;
+    bool timthaychua = false;
+    for (Node<T>* p = l1.getHead(); p != NULL; p = p->get_pNext())
+    {
+        Node<T>* pWalker = p;
+        for (Node<T>* q = l2.getHead(); q != NULL; q = q->get_pNext())
+        {
+            if (pWalker == NULL)
+            {
+                break;
+            }
+            if (pWalker->getData() == q->getData())
+            {
+                tmp.addTail(q->getData());
+                pWalker = pWalker->get_pNext();
+            }
+            else
+            {
+                pWalker = p;
+                if (tmp.getSize() > l3.getSize())
+                {
+                    l3.clear();
+                    for (Node<T>* k = tmp.getHead(); k != NULL; k = k->get_pNext())
+                    {
+                        l3.addTail(k->getData());
+                    }
+                    timthaychua = true;
+                    break;
+                }
+                tmp.clear();
+            }
+        }
+        if (timthaychua)
+        {
+	        break;
+        }
+    }
+    l3.display();
+}
+
+template <typename T>
+void Bai4()
+{
+
+}
