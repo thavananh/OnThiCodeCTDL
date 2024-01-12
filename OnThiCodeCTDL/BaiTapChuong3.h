@@ -1,5 +1,8 @@
 #include "LinkedList.h"
 #include <cmath>
+#include <string>
+#include <iostream>
+using namespace std;
 
 LinkedList<bool>snt;
 
@@ -622,7 +625,176 @@ void Bai3()
 }
 
 template <typename T>
-void Bai4()
+void Bai4_a()
 {
-
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    LinkedList<T> l3;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    for (Node<T>* p = l1.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (!l2.isContain(p->getData()))
+        {
+            l3.addTail(p->getData());
+        }
+    }
+    l3.heapSort_sapxepvundong();
+    l3.display();
 }
+
+template <typename T>
+void Bai4_b()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    LinkedList<T> l3;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    Node<T>* p;
+    Node<T>* q;
+    for (p = l1.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (l2.isContain(p->getData()))
+        {
+            l3.addTail(p->getData());
+        }
+    }
+    l3.heapSort_sapxepvundong();
+    l3.display();
+}
+
+template <typename T>
+void Bai4_c()
+{
+    LinkedList<T> l1;
+    LinkedList<T> l2;
+    LinkedList<T> l3;
+    std::cout << "Nhap so phan tu cho l1: "; int n1; std::cin >> n1;
+    for (size_t i = 0; i < n1; i++)
+    {
+        T a; std::cin >> a;
+        l1.addTail(a);
+    }
+    std::cout << "Nhap so phan tu cho l2: "; int n2; std::cin >> n2;
+    for (size_t i = 0; i < n2; i++)
+    {
+        T a; std::cin >> a;
+        l2.addTail(a);
+    }
+    Node<T>* p;
+    Node<T>* q;
+    for (p = l1.getHead(); p != NULL; p = p->get_pNext())
+    {
+        if (!l3.isContain(p->getData()))
+        {
+            l3.addTail(p->getData());
+        }
+    }
+    for (q = l2.getHead(); q != NULL; q = q->get_pNext())
+    {
+        if (!l3.isContain(q->getData()))
+        {
+            l3.addTail(q->getData());
+        }   
+    }
+    l3.heapSort_sapxepvundong();
+    l3.display();
+}
+
+struct DateTime
+{
+    int day;
+    int month;
+    int year;
+};
+
+istream& operator >> (istream& is, DateTime& dt)
+{
+    is >> dt.day >> dt.month >> dt.year;
+    return is;
+}
+
+ostream& operator << (ostream& os, DateTime dt)
+{
+    os << dt.day << "/" << dt.month << "/" << dt.year;
+    return os;
+}
+
+
+class SinhVien_Bai5
+{
+    std::string _strMaSinhVien;
+    std::string _strHoTen;
+    std::string _strLop;
+    DateTime _dtNgaySinh;
+    double _dDiemTrungBinh;
+public:
+    SinhVien_Bai5(string strMaSinhVien, string strHoTen, string strLop, DateTime dtNgaySinh, double dDiemTrungBinh)
+    {
+        _strMaSinhVien = strMaSinhVien;
+        _strHoTen = strHoTen;
+        _strLop = strLop;
+        _dtNgaySinh = dtNgaySinh;
+        _dDiemTrungBinh = dDiemTrungBinh;
+    }
+    void nhap()
+    {
+        cout << "Nhap msv: "; cin >> _strMaSinhVien;
+        cout << "Nhap ho ten: "; cin >> _strHoTen;
+        cout << "Nhap lop: "; cin >> _strLop;
+        cout << "Nhap ngay sinh: "; cin >> _dtNgaySinh;
+        cout << "Nhap diem trung binh: "; cin >> _dDiemTrungBinh;
+    }
+    void xuat()
+    {
+        cout << "Ma SV: " << _strMaSinhVien << '\n';
+        cout << "Ho Ten: " << _strHoTen << '\n';
+        cout << "Lop: " << _strLop << '\n';
+        cout << "Ngay sinh:" << _dtNgaySinh << '\n';
+        cout << "Diem trung binh: " << _dDiemTrungBinh;
+    }
+};
+
+class SinhVienList
+{
+    Node<SinhVien_Bai5>* _pHead;
+    Node<SinhVien_Bai5>* _pTail;
+    long _lSize;
+public:
+    void addStudent(const SinhVien_Bai5& data)
+    {
+        Node<SinhVien_Bai5>* pAdd = new typename Node<SinhVien_Bai5>::Node(data);
+        if (_pHead == NULL)
+        {
+            _pHead = pAdd;
+            _pTail = pAdd;
+        }
+        else
+        {
+            _pTail->set_pNext(pAdd);
+            _pTail = pAdd;
+        }
+        _lSize++;
+    }
+};

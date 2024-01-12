@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "BaiTapChuong3.h"
 #include <iostream>
 
 template <typename T>
@@ -47,3 +48,4 @@ template class Node<double>;
 template class Node<std::string>;
 template class Node<long>;
 template class Node<bool>;
+template class Node<SinhVien_Bai5>;

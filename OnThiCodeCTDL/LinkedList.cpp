@@ -1,4 +1,5 @@
 #include "LinkedList.h"
+#include "BaiTapChuong3.h"
 #include <iostream>
 
 template<typename T>
@@ -297,7 +298,7 @@ void LinkedList<T>::swapNodeData_index(unsigned int index1, unsigned int index2)
 }
 
 template <typename T>
-void LinkedList<T>::interchangeSort_doichotructiep(char option = '<')
+void LinkedList<T>::interchangeSort_doichotructiep(char option)
 {
     Node<T>* p;
     Node<T>* q;
@@ -336,7 +337,7 @@ void LinkedList<T>::interchangeSort_doichotructiep(char option = '<')
 }
 
 template <typename T>
-void LinkedList<T>::selectionSort_sapxepchon(char option = '<')
+void LinkedList<T>::selectionSort_sapxepchon(char option)
 {
     Node<T>* p;
     Node<T>* q;
@@ -355,7 +356,7 @@ void LinkedList<T>::selectionSort_sapxepchon(char option = '<')
             if (tmp != p)
             {
                 Node<T>* tmp1 = p;
-                p = tmp->_data;
+                p->setData(tmp->_data);
                 tmp->_data = tmp1->_data;
             }
         }
@@ -375,7 +376,7 @@ void LinkedList<T>::selectionSort_sapxepchon(char option = '<')
             if (tmp != p)
             {
                 Node<T>* tmp1 = p;
-                p = tmp->_data;
+                p->_data = tmp->_data;
                 tmp->_data = tmp1->_data;
             }
         }
@@ -383,7 +384,7 @@ void LinkedList<T>::selectionSort_sapxepchon(char option = '<')
 }
 
 template <typename T>
-void LinkedList<T>::insertionSort_sapxepchen(char option = '<')
+void LinkedList<T>::insertionSort_sapxepchen(char option)
 {
     Node<T>* p;
     Node<T>* q;
@@ -414,7 +415,7 @@ void LinkedList<T>::insertionSort_sapxepchen(char option = '<')
 }
 
 template <typename T>
-void LinkedList<T>::bubbleSort_sapxepnoibot(char option = '<')
+void LinkedList<T>::bubbleSort_sapxepnoibot(char option)
 {
     Node<T>* p;
     Node<T>* q;
@@ -492,7 +493,7 @@ void LinkedList<T>::shift_minheap(long int left, long int right)
         {
             joint = joint + 1;
         }
-        if (getNodeAt(joint) > x)
+        if (getNodeAt(joint)->_data > x)
         {
             break;
         }
@@ -524,7 +525,7 @@ void LinkedList<T>::createMinHeap()
 }
 
 template <typename T>
-void LinkedList<T>::heapSort_sapxepvundong(char option = '<')
+void LinkedList<T>::heapSort_sapxepvundong(char option)
 {
     if (option == '<')
     {
@@ -557,11 +558,11 @@ void LinkedList<T>::heapify_maxheap_28tech(long int index, long int N)
     long int largest = index;
     long int left = index*2 + 1;
     long int right = index * 2 + 2;
-    if (left < N && getNodeAt(left)->_data > getNodeAt(largest))
+    if (left < N && getNodeAt(left)->_data > getNodeAt(largest)->_data)
     {
         largest = left;
     }
-    if (right < N && getNodeAt(right)->_data > getNodeAt(largest) )
+    if (right < N && getNodeAt(right)->_data > getNodeAt(largest)->_data )
     {
         largest = right;
     }
@@ -578,11 +579,11 @@ void LinkedList<T>::heapify_minheap_28tech(long int index, long int N)
     long int smallest = index;
     long int left = index*2 + 1;
     long int right = index * 2 + 2;
-    if (left < N && getNodeAt(left)->_data < getNodeAt(smallest))
+    if (left < N && getNodeAt(left)->_data < getNodeAt(smallest)->_data)
     {
         smallest = left;
     }
-    if (right < N && getNodeAt(right)->_data < getNodeAt(smallest) )
+    if (right < N && getNodeAt(right)->_data < getNodeAt(smallest)->_data )
     {
         smallest = right;
     }
@@ -612,7 +613,7 @@ void LinkedList<T>::createMinHeap_28tech()
 }
 
 template <typename T>
-void LinkedList<T>::heapSort_28tech(char option = '<')
+void LinkedList<T>::heapSort_28tech(char option)
 {
     if (option == '<')
     {
@@ -631,3 +632,4 @@ template class LinkedList<double>;
 template class LinkedList<std::string>;
 template class LinkedList<long>;
 template class LinkedList<bool>;
+template class LinkedList<SinhVien_Bai5>;

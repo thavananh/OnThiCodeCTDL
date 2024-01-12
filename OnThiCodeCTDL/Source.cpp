@@ -133,5 +133,10 @@ int main()
 	//Bai2_f<int>();
 	//Bai2_g<int>();
 	//Bai2_h<int>();
-Bai3<int>();
+	//Bai3<int>();
+	//Bai4_a<int>();
+	//Bai4_b<int>();
+	//Bai4_c<int>();
+SinhVienList lstSinhVien;
+lstSinhVien.nhap();
 }
