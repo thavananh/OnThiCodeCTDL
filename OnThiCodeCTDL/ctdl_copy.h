@@ -341,7 +341,6 @@ public:
 				{
 					joint = joint + 1;
 				}
-
 			}
 			if (_arr[joint] > x)
 			{

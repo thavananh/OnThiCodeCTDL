@@ -279,13 +279,31 @@ Node<T>* LinkedList<T>::getTail()
 }
 
 template <typename T>
+void LinkedList<T>::swapNodeData(Node<T>* node1, Node<T>* node2)
+{
+    T tmp = node1->_data;
+    node1->setData(node2->_data);
+    node2->setData(tmp);
+}
+
+template <typename T>
+void LinkedList<T>::swapNodeData_index(unsigned int index1, unsigned int index2)
+{
+    Node<T>* node1 = getNodeAt(index1);
+    Node<T>* node2 = getNodeAt(index2);
+    T tmp = node1->_data;
+    node1->setData(node2->_data);
+    node2->setData(tmp);
+}
+
+template <typename T>
 void LinkedList<T>::interchangeSort_doichotructiep(char option = '<')
 {
     Node<T>* p;
     Node<T>* q;
     if (option == '<')
     {
-        for (p = _pHead; p != NULL; p = p->get_pNext())
+        for (p = _pHead; p->_pNext != NULL; p = p->get_pNext())
         {
             for (q = p->get_pNext(); q != NULL; q = q->get_pNext())
             {
@@ -301,7 +319,7 @@ void LinkedList<T>::interchangeSort_doichotructiep(char option = '<')
     }
     else
     {
-        for (p = _pHead; p != NULL; p = p->get_pNext())
+        for (p = _pHead; p->_pNext != NULL; p = p->get_pNext())
         {
             for (q = p->get_pNext(); q != NULL; q = q->get_pNext())
             {
@@ -324,7 +342,7 @@ void LinkedList<T>::selectionSort_sapxepchon(char option = '<')
     Node<T>* q;
     if (option == '<')
     {
-        for (p = _pHead; p != NULL; p = p->_pNext)
+        for (p = _pHead; p->_pNext != NULL; p = p->_pNext)
         {
             Node<T>* tmp = p;
             for (q = p->_pNext; q != NULL; q = q->_pNext)
@@ -344,7 +362,7 @@ void LinkedList<T>::selectionSort_sapxepchon(char option = '<')
     }
     else
     {
-        for (p = _pHead; p != NULL; p = p->_pNext)
+        for (p = _pHead; p->_pNext != NULL; p = p->_pNext)
         {
             Node<T>* tmp = p;
             for (q = p->_pNext; q != NULL; q = q->_pNext)
@@ -361,6 +379,249 @@ void LinkedList<T>::selectionSort_sapxepchon(char option = '<')
                 tmp->_data = tmp1->_data;
             }
         }
+    }
+}
+
+template <typename T>
+void LinkedList<T>::insertionSort_sapxepchen(char option = '<')
+{
+    Node<T>* p;
+    Node<T>* q;
+    if (option == '<')
+    {
+        for (p = _pHead->_pNext; p->_pNext != NULL; p = p->_pNext)
+        {
+            T data = p->_data;
+            for (q = p; q != _pHead && q->_data > data; q = searchPre(q))
+            {
+                q->_data = searchPre(q)->_data;
+            }
+            q->_data = data;
+        }
+    }
+    else
+    {
+        for (p = _pHead->_pNext; p->_pNext != NULL; p = p->_pNext)
+        {
+            T data = p->_data;
+            for (q = p; q != _pHead && q->_data < data; q = searchPre(q))
+            {
+                q->_data = searchPre(q)->_data;
+            }
+            q->_data = data;
+        }
+    }
+}
+
+template <typename T>
+void LinkedList<T>::bubbleSort_sapxepnoibot(char option = '<')
+{
+    Node<T>* p;
+    Node<T>* q;
+    if (option == '<')
+    {
+        for (p = _pHead; p->_pNext != NULL; p = p->_pNext)
+        {
+            for (q = _pTail; q != p->_pNext; q = searchPre(q))
+            {
+                Node<T>* tmp = searchPre(q);
+                if (q->_data < tmp->_data)
+                {
+                    Node<T>* tmp1 = q;
+                    q->_data = tmp->_data;
+                    tmp->_data = tmp1->_data;
+                }
+            }
+        }
+    }
+    else
+    {
+        for (p = _pHead; p->_pNext != NULL; p = p->_pNext)
+        {
+            for (q = _pTail; q != p->_pNext; q = searchPre(q))
+            {
+                Node<T>* tmp = searchPre(q);
+                if (q->_data > tmp->_data)
+                {
+                    Node<T>* tmp1 = q;
+                    q->_data = tmp->_data;
+                    tmp->_data = tmp1->_data;
+                }
+            }
+        }
+    }
+}
+
+template <typename T>
+void LinkedList<T>::shift_maxheap(long int left, long int right)
+{
+    T x;
+    long int curr, joint;
+    curr = left; joint = 2*curr+1;
+    x = getNodeAt(curr)->_data;
+    while (joint <= right)
+    {
+        if (joint < right)
+        {
+            if (getNodeAt(joint)->_data < getNodeAt(joint + 1)->_data)
+            {
+                joint = joint + 1;
+            }
+        }
+        if (getNodeAt(joint)->_data < x)
+        {
+            break;
+        }
+        getNodeAt(curr)->setData(getNodeAt(joint)->_data);
+        curr = joint;
+        joint = 2*curr+1;
+    }
+    getNodeAt(curr)->setData(x);
+}
+
+template <typename T>
+void LinkedList<T>::shift_minheap(long int left, long int right)
+{
+    T x;
+    long int curr, joint;
+    curr = left; joint = 2*curr+1;
+    x = getNodeAt(curr)->_data;
+    while (joint <= right)
+    {
+        if (getNodeAt(joint)->_data < getNodeAt(joint + 1)->_data)
+        {
+            joint = joint + 1;
+        }
+        if (getNodeAt(joint) > x)
+        {
+            break;
+        }
+        getNodeAt(curr)->setData(getNodeAt(joint)->_data);
+        curr = joint;
+        joint = 2*curr+1;
+    }
+    getNodeAt(curr)->setData(x);
+}
+
+template <typename T>
+void LinkedList<T>::createMaxHeap()
+{
+    long int left; // lấy tầng gần cuối
+    for (left = (_iSize - 1)/2; left >= 0; left--)
+    {
+        shift_maxheap(left, _iSize - 1);
+    }
+}
+
+template <typename T>
+void LinkedList<T>::createMinHeap()
+{
+    long int left;
+    for (left = (_iSize-1)/2; left >= 0; left--)
+    {
+        shift_minheap(left, _iSize - 1);
+    }
+}
+
+template <typename T>
+void LinkedList<T>::heapSort_sapxepvundong(char option = '<')
+{
+    if (option == '<')
+    {
+        createMaxHeap();
+        long int right = _iSize - 1;
+        while (right > 0)
+        {
+            swapNodeData_index(0, right);
+            right--;
+            shift_maxheap(0, right);
+        }
+        
+    }
+    else
+    {
+        createMinHeap();
+        long int right = _iSize - 1;
+        while (right > 0)
+        {
+            swapNodeData_index(0, right);
+            right--;
+            shift_minheap(0, right);
+        }
+    }
+}
+
+template <typename T>
+void LinkedList<T>::heapify_maxheap_28tech(long int index, long int N)
+{
+    long int largest = index;
+    long int left = index*2 + 1;
+    long int right = index * 2 + 2;
+    if (left < N && getNodeAt(left)->_data > getNodeAt(largest))
+    {
+        largest = left;
+    }
+    if (right < N && getNodeAt(right)->_data > getNodeAt(largest) )
+    {
+        largest = right;
+    }
+    if (largest != index)
+    {
+        swapNodeData_index(index, largest);
+        heapify_minheap_28tech(largest, N);
+    }
+}
+
+template <typename T>
+void LinkedList<T>::heapify_minheap_28tech(long int index, long int N)
+{
+    long int smallest = index;
+    long int left = index*2 + 1;
+    long int right = index * 2 + 2;
+    if (left < N && getNodeAt(left)->_data < getNodeAt(smallest))
+    {
+        smallest = left;
+    }
+    if (right < N && getNodeAt(right)->_data < getNodeAt(smallest) )
+    {
+        smallest = right;
+    }
+    if (smallest != index)
+    {
+        swapNodeData_index(index, smallest);
+        heapify_minheap_28tech(smallest, N);
+    }
+}
+
+template <typename T>
+void LinkedList<T>::createMaxHeap_28tech()
+{
+    for (long int i = _iSize/ 2 -1; i >= 0; i--)
+    {
+        heapify_maxheap_28tech(i, _iSize);
+    }
+}
+
+template <typename T>
+void LinkedList<T>::createMinHeap_28tech()
+{
+    for (long int i = _iSize/ 2 -1; i >= 0; i--)
+    {
+        heapify_minheap_28tech(i, _iSize);
+    }
+}
+
+template <typename T>
+void LinkedList<T>::heapSort_28tech(char option = '<')
+{
+    if (option == '<')
+    {
+        for (long int i = _iSize - 1; i > 0; i--)
+        {
+            swapNodeData_index(0, i);
+            heapify_maxheap_28tech(0, i);
+        }
+        
     }
     
 }
