@@ -1,7 +1,8 @@
-﻿#include  "ctdl_copy.h"
+﻿//#include  "ctdl_copy.h"
 //#include "baitapchuong2.h"
-#include  "BaiTapChuong3.h"
-#include "LinkedList.h"
+//#include  "BaiTapChuong3.h"
+//#include "LinkedList.h"
+#include "BaiTapChuong3_Bai5.h"
 #include <iostream>
 using namespace std;
 
@@ -138,5 +139,11 @@ int main()
 	//Bai4_b<int>();
 	//Bai4_c<int>();
 SinhVienList lstSinhVien;
-lstSinhVien.nhap();
+lstSinhVien.input();
+//lstSinhVien.display();
+lstSinhVien.Bai1_b("4801104053", "Nguyen Anh Hung");
+lstSinhVien.Bai1_b("4801104118", "Lau Minh Tam");
+//lstSinhVien.display();
+lstSinhVien.insertionSort();
+lstSinhVien.display();
 }

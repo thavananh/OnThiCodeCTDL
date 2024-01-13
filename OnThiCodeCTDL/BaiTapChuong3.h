@@ -1,7 +1,10 @@
+#pragma once
 #include "LinkedList.h"
 #include <cmath>
 #include <string>
 #include <iostream>
+//#include "Node.h"
+
 using namespace std;
 
 LinkedList<bool>snt;
@@ -722,79 +725,113 @@ void Bai4_c()
     l3.display();
 }
 
-struct DateTime
-{
-    int day;
-    int month;
-    int year;
-};
-
-istream& operator >> (istream& is, DateTime& dt)
-{
-    is >> dt.day >> dt.month >> dt.year;
-    return is;
-}
-
-ostream& operator << (ostream& os, DateTime dt)
-{
-    os << dt.day << "/" << dt.month << "/" << dt.year;
-    return os;
-}
-
-
-class SinhVien_Bai5
-{
-    std::string _strMaSinhVien;
-    std::string _strHoTen;
-    std::string _strLop;
-    DateTime _dtNgaySinh;
-    double _dDiemTrungBinh;
-public:
-    SinhVien_Bai5(string strMaSinhVien, string strHoTen, string strLop, DateTime dtNgaySinh, double dDiemTrungBinh)
-    {
-        _strMaSinhVien = strMaSinhVien;
-        _strHoTen = strHoTen;
-        _strLop = strLop;
-        _dtNgaySinh = dtNgaySinh;
-        _dDiemTrungBinh = dDiemTrungBinh;
-    }
-    void nhap()
-    {
-        cout << "Nhap msv: "; cin >> _strMaSinhVien;
-        cout << "Nhap ho ten: "; cin >> _strHoTen;
-        cout << "Nhap lop: "; cin >> _strLop;
-        cout << "Nhap ngay sinh: "; cin >> _dtNgaySinh;
-        cout << "Nhap diem trung binh: "; cin >> _dDiemTrungBinh;
-    }
-    void xuat()
-    {
-        cout << "Ma SV: " << _strMaSinhVien << '\n';
-        cout << "Ho Ten: " << _strHoTen << '\n';
-        cout << "Lop: " << _strLop << '\n';
-        cout << "Ngay sinh:" << _dtNgaySinh << '\n';
-        cout << "Diem trung binh: " << _dDiemTrungBinh;
-    }
-};
-
-class SinhVienList
-{
-    Node<SinhVien_Bai5>* _pHead;
-    Node<SinhVien_Bai5>* _pTail;
-    long _lSize;
-public:
-    void addStudent(const SinhVien_Bai5& data)
-    {
-        Node<SinhVien_Bai5>* pAdd = new typename Node<SinhVien_Bai5>::Node(data);
-        if (_pHead == NULL)
-        {
-            _pHead = pAdd;
-            _pTail = pAdd;
-        }
-        else
-        {
-            _pTail->set_pNext(pAdd);
-            _pTail = pAdd;
-        }
-        _lSize++;
-    }
-};
+//struct DateTime
+//{
+//    int _iDay;
+//    int _iMonth;
+//    int _iYear;
+//    
+//    DateTime(int day = 1, int month = 1, int year = 1990)
+//    {
+//        _iDay = day;
+//        _iMonth = month;
+//        _iYear = year;
+//    }
+//};
+//
+//istream& operator >> (istream& is, DateTime& dt)
+//{
+//    is >> dt._iDay >> dt._iMonth >> dt._iYear;
+//    return is;
+//}
+//
+//ostream& operator << (ostream& os, DateTime dt)
+//{
+//    os << dt._iDay << "/" << dt._iMonth << "/" << dt._iYear;
+//    return os;
+//}
+//
+//
+//class SinhVien_Bai5
+//{
+//    std::string _strMaSinhVien;
+//    std::string _strHoTen;
+//    std::string _strLop;
+//    DateTime _dtNgaySinh;
+//    double _dDiemTrungBinh;
+//public:
+//    SinhVien_Bai5(string strMaSinhVien = "", string strHoTen = "", string strLop = "", DateTime dtNgaySinh = DateTime(), double dDiemTrungBinh = 0.0)
+//    {
+//        _strMaSinhVien = strMaSinhVien;
+//        _strHoTen = strHoTen;
+//        _strLop = strLop;
+//        _dtNgaySinh = dtNgaySinh;
+//        _dDiemTrungBinh = dDiemTrungBinh;
+//    }
+//    void nhap()
+//    {
+//        cout << "Nhap msv: "; cin >> _strMaSinhVien;
+//        cout << "Nhap ho ten: "; cin >> _strHoTen;
+//        cout << "Nhap lop: "; cin >> _strLop;
+//        cout << "Nhap ngay sinh: "; cin >> _dtNgaySinh;
+//        cout << "Nhap diem trung binh: "; cin >> _dDiemTrungBinh;
+//    }
+//    void xuat()
+//    {
+//        cout << "Ma SV: " << _strMaSinhVien << '\n';
+//        cout << "Ho Ten: " << _strHoTen << '\n';
+//        cout << "Lop: " << _strLop << '\n';
+//        cout << "Ngay sinh:" << _dtNgaySinh << '\n';
+//        cout << "Diem trung binh: " << _dDiemTrungBinh;
+//    }
+//    friend ostream& operator << (ostream& os, SinhVien_Bai5 sinhvien)
+//    {
+//        os << "Ma SV: " << sinhvien._strMaSinhVien << '\n';
+//        os << "Ho Ten: " << sinhvien._strHoTen << '\n';
+//        os << "Lop: " << sinhvien._strLop << '\n';
+//        os << "Ngay sinh:" << sinhvien._dtNgaySinh << '\n';
+//        os << "Diem trung binh: " << sinhvien._dDiemTrungBinh;
+//        return os;
+//    }
+//};
+//
+//class SinhVienList
+//{
+//    Node<SinhVien_Bai5>* _pHead;
+//    Node<SinhVien_Bai5>* _pTail;
+//    long _lSize;
+//public:
+//    void addStudent(const SinhVien_Bai5& data)
+//    {
+//        Node<SinhVien_Bai5>* pAdd = new typename Node<SinhVien_Bai5>::Node(data);
+//        if (_pHead == NULL)
+//        {
+//            _pHead = pAdd;
+//            _pTail = pAdd;
+//        }
+//        else
+//        {
+//            _pTail->set_pNext(pAdd);
+//            _pTail = pAdd;
+//        }
+//        _lSize++;
+//    }
+//    void display()
+//    {
+//        for (Node<SinhVien_Bai5>* p = _pHead; p != NULL; p=p->get_pNext())
+//        {
+//            p->getData().xuat();
+//        }
+//    }
+//    void input()
+//    {
+//        cout << "Nhap so luong sinh vien: "; long int n; cin >> n;
+//        for (size_t i = 0; i < n; i++)
+//        {
+//            SinhVien_Bai5 x;
+//            x.nhap();
+//            addStudent(x);
+//        }
+//        
+//    }
+//};

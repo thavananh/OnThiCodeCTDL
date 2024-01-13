@@ -1,5 +1,5 @@
 #include "LinkedList.h"
-#include "BaiTapChuong3.h"
+//#include "BaiTapChuong3.h"
 #include <iostream>
 
 template<typename T>
@@ -632,4 +632,3 @@ template class LinkedList<double>;
 template class LinkedList<std::string>;
 template class LinkedList<long>;
 template class LinkedList<bool>;
-template class LinkedList<SinhVien_Bai5>;
