@@ -139,11 +139,10 @@ int main()
 	//Bai4_b<int>();
 	//Bai4_c<int>();
 SinhVienList lstSinhVien;
-lstSinhVien.input();
+lstSinhVien.Bai5_a();
+//lstSinhVien.Bai5_b();
+//lstSinhVien.Bai5_c();
+//lstSinhVien.Bai5_d("19211TT1239");
+lstSinhVien.Bai5_e();
 //lstSinhVien.display();
-lstSinhVien.Bai1_b("4801104053", "Nguyen Anh Hung");
-lstSinhVien.Bai1_b("4801104118", "Lau Minh Tam");
-//lstSinhVien.display();
-lstSinhVien.insertionSort();
-lstSinhVien.display();
 }

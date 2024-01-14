@@ -128,6 +128,15 @@ public:
         }
         return 0;
     }
+    long getTongGiaTriMaSinhVien()
+    {
+        long rs = 0;
+        for (size_t i = 0; i < _strMaSinhVien.length(); i++)
+        {
+            rs += (int)_strMaSinhVien[i];
+        }
+        return rs;
+    }
 };
 
 
@@ -204,16 +213,7 @@ public:
         }
         
     }
-    void Bai1_b(string x, string y)
-    {
-        for (NodeSinhVien* p = _pHead; p != NULL; p = p->get_pNext())
-        {
-            if (p->getData().getMaSinhVien() == x)
-            {
-                p->getData().setHoTen(y);
-            }
-        }
-    }
+    
     void swapTwoNode(NodeSinhVien* node1, NodeSinhVien* node2)
     {
         SinhVien_Bai5 tmp = node1->getData();
@@ -249,8 +249,108 @@ public:
         }
     }
     
-    void insertionSort_TheoMSSV()
+    void interchangeSort_TheoMSSV()
     {
-
+        NodeSinhVien* q;
+        NodeSinhVien* p;
+        for (p = _pHead; p->get_pNext() != NULL; p = p->get_pNext())
+        {
+            NodeSinhVien* min = p;
+            for (q = p->get_pNext(); q != NULL; q = q->get_pNext())
+            {
+                if (q->getData().getTongGiaTriMaSinhVien() < min->getData().getTongGiaTriMaSinhVien())
+                {
+                    min = q;
+                }
+            }
+            if (min != p)
+            {
+                SinhVien_Bai5 tmp = p->getData();
+                p->setData(min->getData());
+                min->setData(tmp);
+            }
+        }
     }
+
+    void removeStudentAtIndex(long int index)
+    {
+        
+    }
+
+    void removeStudentAfterStudent(NodeSinhVien* node);
+
+    void binarySearch_MaSinhVien()
+    {
+        long int bottom, mid, top;
+        bottom = 0;
+        top = _lSize - 1;
+        mid = bottom / 2 + top / 2;
+        while (bottom <= top)
+        {
+            if ()
+            {
+                /* code */
+            }
+            
+        }
+        
+    }
+
+    void Bai5_a()
+    {
+        input();
+    }
+
+    /*void Bai5_b(string x, string y)
+    {
+        for (NodeSinhVien* p = _pHead; p != NULL; p = p->get_pNext())
+        {
+            if (p->getData().getMaSinhVien() == x)
+            {
+                p->getData().setHoTen(y);
+            }
+        }
+    }*/
+
+    void Bai5_b()
+    {
+        display();
+    }
+
+    void Bai5_c()
+    {
+        for (NodeSinhVien* p = _pHead; p != NULL; p = p->get_pNext())
+        {
+            if (p->getData().getDiemTrungBinh() > 5)
+            {
+                p->getData().xuat(); cout << endl;
+            }
+        }
+    }
+
+    void Bai5_d(string maSinhVien)
+    {
+        for (NodeSinhVien* p = _pHead; p != NULL; p = p->get_pNext())
+        {
+            if (p->getData().getMaSinhVien() == maSinhVien)
+            {
+                p->getData().xuat(); cout << endl;
+            }
+        }
+        
+    }
+
+    void Bai5_e()
+    {
+        interchangeSort_TheoMSSV();
+        display();
+    }
+
+    void Bai5_f();
+
+    void Bai5_g();
+
+    void Bai5_h();
+
+
 };
