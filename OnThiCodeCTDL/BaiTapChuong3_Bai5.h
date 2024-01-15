@@ -279,21 +279,58 @@ public:
 
     void removeStudentAfterStudent(NodeSinhVien* node);
 
-    void binarySearch_MaSinhVien()
+    NodeSinhVien* getNodeAtIndex(long int index)
     {
+        if (index > _lSize - 1 || index < 0)
+        {
+            return NULL;
+        }
+        NodeSinhVien* pWalker = _pHead;
+        long int i = 0;
+        while (pWalker->get_pNext() != NULL && i != index)
+        {
+            pWalker = pWalker->get_pNext();
+            ++i;
+        }
+        return pWalker;
+    }
+
+    void binarySearch_MaSinhVien(string maSinhVien)
+    {
+        long sumMaSinhVien = 0;
+        for (size_t i = 0; i < maSinhVien.length(); i++)
+        {
+            sumMaSinhVien += (int)maSinhVien[i];
+        }
         long int bottom, mid, top;
         bottom = 0;
         top = _lSize - 1;
-        mid = bottom / 2 + top / 2;
+        
+        bool isFind = false;
         while (bottom <= top)
         {
-            if ()
+            mid = bottom / 2 + top / 2;
+            NodeSinhVien* midNode = getNodeAtIndex(mid);
+            if (midNode->getData().getTongGiaTriMaSinhVien() == sumMaSinhVien)
             {
-                /* code */
+                isFind = true;
+                cout << endl;
+                midNode->getData().xuat();
+                break;
             }
-            
+            else if (midNode->getData().getTongGiaTriMaSinhVien() < sumMaSinhVien)
+            {
+                bottom = mid + 1;
+            }
+            else
+            {
+                top = mid - 1;
+            }
         }
-        
+        if (!isFind)
+        {
+            cout << "Khong tim thay sinh vien !!!";
+        }
     }
 
     void Bai5_a()
@@ -346,11 +383,15 @@ public:
         display();
     }
 
-    void Bai5_f();
+    void Bai5_f()
+    {
+        interchangeSort_TheoMSSV();
+        binarySearch_MaSinhVien("19211TT1239");
+    }
 
-    void Bai5_g();
+    /*void Bai5_g();
 
-    void Bai5_h();
+    void Bai5_h();*/
 
 
 };

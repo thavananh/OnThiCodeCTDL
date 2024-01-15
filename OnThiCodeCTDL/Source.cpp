@@ -2,7 +2,8 @@
 //#include "baitapchuong2.h"
 //#include  "BaiTapChuong3.h"
 //#include "LinkedList.h"
-#include "BaiTapChuong3_Bai5.h"
+//#include "BaiTapChuong3_Bai5.h"
+#include "BTCTDL_2022_2023.h"
 #include <iostream>
 using namespace std;
 
@@ -138,11 +139,15 @@ int main()
 	//Bai4_a<int>();
 	//Bai4_b<int>();
 	//Bai4_c<int>();
-SinhVienList lstSinhVien;
-lstSinhVien.Bai5_a();
-//lstSinhVien.Bai5_b();
-//lstSinhVien.Bai5_c();
-//lstSinhVien.Bai5_d("19211TT1239");
-lstSinhVien.Bai5_e();
-//lstSinhVien.display();
+	//SinhVienList lstSinhVien;
+	//lstSinhVien.Bai5_a();
+	//lstSinhVien.Bai5_b();
+	//lstSinhVien.Bai5_c();
+	//lstSinhVien.Bai5_d("19211TT1239");
+	//lstSinhVien.Bai5_e();
+	//lstSinhVien.Bai5_f();
+	//lstSinhVien.display();
+	List lstHocPhan;
+	lstHocPhan.input();
+	lstHocPhan.output();
 }
