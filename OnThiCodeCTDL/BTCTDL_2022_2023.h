@@ -57,6 +57,25 @@ public:
         cin >> _iSoTC >> _bBatBuoc >> _strMaHPTruoc;
         _pNext = new SV();
     }
+    void setAll(const HocPhan& hp)
+    {
+        _strMaHP = hp._strMaHP;
+        _strTenHP = hp._strTenHP;
+        _iSoTC = hp._iSoTC;
+        _bBatBuoc = hp._bBatBuoc;
+        _strMaHPTruoc = hp._strMaHPTruoc;
+    }
+
+    long tinhTongMaHP()
+    {
+        long sum = 0;
+        for (size_t i = 0; i < _strMaHP.length(); i++)
+        {
+            sum += (int)_strMaHP[i];
+        }
+        return sum;
+    }
+
     void setNextNode(HocPhan* nextNode)
     {
         _pNext->setpNext(nextNode);
@@ -73,6 +92,7 @@ public:
         cout << "Bat buoc: " << _bBatBuoc << endl;
         cout << "Ma HP truoc: " << _strMaHPTruoc;
     } 
+
 };
 
 
@@ -96,8 +116,33 @@ public:
         else
         {
             _pTail->setNextNode(node);
+            _pTail = node;
         }
     }
+
+    void swapTwoNode(HocPhan* node1, HocPhan* node2)
+    {
+        HocPhan* tmp = new HocPhan();
+        tmp->setAll(*node2);
+        node2->setAll(*node1);
+        node1->setAll(*tmp);
+    }
+    void interChangeSort_TheoMSV()
+    {
+        HocPhan* p;
+        HocPhan* q;
+        for (p = _pHead; p->getpNext() != NULL; p = p->getpNext())
+        {
+            for (q = p->getpNext(); q != NULL; q = q->getpNext())
+            {
+                if (q->tinhTongMaHP() < p->tinhTongMaHP())
+                {
+                    swapTwoNode(p, q);
+                }  
+            }
+        }
+    }
+
     void input()
     {
         cout << "Nhap so luong hp: "; int n; cin >> n;
@@ -106,15 +151,15 @@ public:
             HocPhan hp;
             hp.input();
             addHP(hp);
-        }
-        
+        }   
+        interChangeSort_TheoMSV();
     }
     void output()
     {
         HocPhan* pWalker = _pHead;
         while (pWalker != NULL)
         {
-            pWalker->output();
+            pWalker->output(); cout << endl << endl;
             pWalker = pWalker->getpNext();
         }
     }
