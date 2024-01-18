@@ -18,4 +18,3 @@ public:
     Node* get_pNext();
 };
 
-

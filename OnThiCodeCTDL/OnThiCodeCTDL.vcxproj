@@ -132,6 +132,7 @@
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Node_copy_1.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Stack_Node.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="baitapchuong2.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="LinkedList_copy_1.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Node_copy_1.h" />
+    <ClInclude Include="Stack_Node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,8 +3,9 @@
 //#include  "BaiTapChuong3.h"
 //#include "LinkedList.h"
 //#include "BaiTapChuong3_Bai5.h"
-#include "BTCTDL_2022_2023.h"
+//#include "BTCTDL_2022_2023.h"
 #include <iostream>
+#include "Stack_Node.h"
 using namespace std;
 
 int main()
@@ -147,7 +148,14 @@ int main()
 	//lstSinhVien.Bai5_e();
 	//lstSinhVien.Bai5_f();
 	//lstSinhVien.display();
-	List lstHocPhan;
+	/*List lstHocPhan;
 	lstHocPhan.input();
-	lstHocPhan.output();
+	lstHocPhan.output();*/
+Stack_Node<int> stc;
+for (size_t i = 1; i <= 5; i++)
+{
+	stc.push(i);
+}
+cout << stc.peek() << endl;
+stc.display();
 }
